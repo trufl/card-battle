@@ -33,6 +33,10 @@ Card.init(
             isNumeric: true,
         },
     }, 
+    card_image: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
 },
   {
     sequelize,
