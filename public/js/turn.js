@@ -12,4 +12,9 @@ function turnBased () {
     }
 }
 
+
+function getAiChoice() {
+    //const ready = document.getAttribute('data-ready');
+}
+
 module.exports = turnBased;
