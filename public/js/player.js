@@ -6,6 +6,7 @@ class Player {
     }
 
     attack(opp,card,hitpoints) {
+        this.lastAttack = true;
         if(card.health > hitpoints) {
             card.health = card.health - hitpoints;
         } else {
@@ -21,6 +22,7 @@ class Player {
     }
 
     defend(card, defensePts) {
+        this.lastAttack = false;
         card.health += defensePts;
     }
 
@@ -31,4 +33,13 @@ class Player {
             return false;
         }
     }
+
+    checkLastMove() {
+        if(this.lastAttack){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
