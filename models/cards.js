@@ -32,7 +32,7 @@ Card.init(
         validate: {
             isNumeric: true,
         },
-    },
+    }, 
 },
   {
     sequelize,

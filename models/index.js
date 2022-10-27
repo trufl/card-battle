@@ -26,7 +26,6 @@ Card.belongsToMany(User, {
 
 });
 
-
 Deck.belongsToMany(User, {
     foreignKey: "user_id",
 
