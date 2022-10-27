@@ -1,4 +1,4 @@
-class gameStats {
+class GameStats {
     constructor(player, ai, turn = true){
         this.player = player;
         this.ai = ai;
