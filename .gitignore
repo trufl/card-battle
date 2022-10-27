@@ -105,3 +105,4 @@ dist
 
 .DS_store
 package-lock.json
+example.html
