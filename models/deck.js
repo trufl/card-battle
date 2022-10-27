@@ -7,7 +7,6 @@ class Deck extends Model {}
 
 Deck.init(
   {
-    // define columns
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -20,7 +19,7 @@ Deck.init(
       },
     cards: {
         card_id: dataTypes.INTEGER,
-        
+
     }
 },
   {

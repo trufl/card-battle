@@ -7,7 +7,6 @@ class Card extends Model {}
 
 Card.init(
   {
-    // define columns
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
