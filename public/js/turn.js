@@ -9,3 +9,8 @@ function turnBased () {
         getAiChoice();
     }
 }
+
+
+function getAiChoice() {
+    //const ready = document.getAttribute('data-ready');
+}

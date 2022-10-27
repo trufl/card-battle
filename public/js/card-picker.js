@@ -38,7 +38,4 @@ const cards = [
 const pickUsersCard = async () => {
     //const cards = await getCards();
 
-    
-
-
 } 
