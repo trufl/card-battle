@@ -11,7 +11,7 @@ function attackCb(){
     const strength = playedCard.getAttribute('data-strength');
     
     GameStats.player.attack(GameStats.ai, enemyCard, strength );
-    getTurn();
+    turnBased();
 };
 
 function defendCb(){
@@ -19,11 +19,11 @@ function defendCb(){
     const defense = playedCard.getAttribute('data-defense');
 
     GameStats.player.defend(playedCard, defense);
-    getTurn();
+    turnBased();
 };
 
 function skipCb(){
-    getTurn();
+    turnBased();
 };
 
 
@@ -34,7 +34,7 @@ const aiAttack = () => {
     const strength = aiCard.getAttribute('data-strength');
     
     GameStats.ai.attack(GameStats.player, playedCard, strength );
-    getTurn();
+    turnBased();
 };
 
 const aiDefend = () => {
@@ -42,7 +42,7 @@ const aiDefend = () => {
     const defense = aiCard.getAttribute('data-defense');
 
     GameStats.player.defend(aiCard, defense);
-    getTurn();
+    turnBased();
 };
 
 function aiLastMove(){
