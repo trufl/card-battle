@@ -11,9 +11,9 @@ class Card {
         return this.id;
     }
 
-    getHealth() {
-        return this.health;
-    }
+    // getHealth() {
+    //     return this.health;
+    // }
 
     getAttack() {
         return this.attack;
@@ -23,3 +23,5 @@ class Card {
         return this.defense;
     }
 }
+
+module.exports = Card;

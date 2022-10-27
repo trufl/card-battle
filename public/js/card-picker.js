@@ -42,3 +42,5 @@ const pickUsersCard = async () => {
 
 
 } 
+
+module.exports = cards;

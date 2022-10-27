@@ -1,8 +1,8 @@
 class Player {
-    constructor(health = 300, deckId, cards) {
-        this.health = health;
+    constructor( deckId, cards, health = 300) {
         this.deckId = deckId;
         this.cards = cards;
+        this.health = health;
     }
 
     attack(opp,card,hitpoints) {
@@ -11,7 +11,7 @@ class Player {
             card.health = card.health - hitpoints;
         } else {
             const newHit = hitpoints - card.health;
-            card.health = 0;
+            card.health = card.health - card.health;
             
             if(opp.health > newHit) {
                 opp.health = opp.health - newHit;
@@ -47,3 +47,5 @@ class Player {
     }
 
 }
+
+module.exports = Player;

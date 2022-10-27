@@ -1,11 +1,15 @@
+const GameStats = require('../scrypt/gameClass');
+
 function turnBased () {
-    const turn = gameStats.getTurn();
+    const turn = GameStats.getTurn();
 
     if(turn) {
-        gameStats.setTurn(false);
+        GameStats.setTurn(false);
         getPlayerChoice();
     } else {
-        gameStats.setTurn(true);
+        GameStats.setTurn(true);
         getAiChoice();
     }
 }
+
+module.exports = turnBased;

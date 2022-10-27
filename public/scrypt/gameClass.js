@@ -14,3 +14,4 @@ class GameStats {
     }
 };
 
+module.exports = GameStats;
