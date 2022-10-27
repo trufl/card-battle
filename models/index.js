@@ -1,7 +1,7 @@
 // import models
 const Scores = require("./Scores")
 const Deck = require("./Deck")
-const User = require("./User")
+const User = require("./Users")
 const Card = require("./Cards")
 const sequelize = require("../config/connection");
 
