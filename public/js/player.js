@@ -24,6 +24,10 @@ class Player {
         card.health += defensePts;
     }
 
+    checkHealth() {
+        return this.health;
+    }
+
     isAlive() {
         if (this.health > 0) {
             return true;
