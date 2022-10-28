@@ -17,17 +17,18 @@ Deck.init(
       type: DataTypes.STRING,
       
       },
-    card_id: {
+    card_id:{
       type: DataTypes.INTEGER,
 
-    }
+    } 
+
 },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "deck",
+    modelName: "card",
   },
 );
 
