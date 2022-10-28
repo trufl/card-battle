@@ -32,9 +32,9 @@ function attackCb(){
     // const playedCard = document.getElementById('playedCardSection').children[1];
     // const strength = playedCard.getAttribute('data-strength');
     
-    player.attack(ai, strength );
+    gameStats.player.attack(gameStats.ai, strength );
     console.log(ai.health)
-    if(ai.checkHealth()){
+    if(gameStats.ai.checkHealth()){
         turnBased();
     }else{
         console.log("player has died")
@@ -60,9 +60,9 @@ const aiAttack = () => {
     const playedCard = 1
     const strength = 50
     
-    ai.attack(player, strength );
-    console.log(player)
-    if(player.checkHealth()){
+    gameStats.ai.attack(gameStats.player, strength );
+    console.log(gameStats.player)
+    if(gameStats.player.checkHealth()){
         turnBased();
     }else{
         console.log("ai has died")
