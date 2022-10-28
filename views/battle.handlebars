@@ -1,15 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <header>
-    <h1>Card Battle!</h1>
-    
-    </header>
-</body>
-</html>
+<section>
+    <img alt="background image"> 
+    <section>
+        <img alt="player two">
+        <div>
+            <img alt="attack/defend gif">
+        </div>
+        <img alt="player one">
+    </section>
+    <section aria-details="upper section">
+        <section aria-details="card section">
+            {{#each enemycard}}
+            <img data-defense="{{defense}}" data-strength="{{strength}}" src="{{src}}">
+            {{/each}}
+        </section>
+        <section aria-details="below cards"  >
+            <div>
+                <img alt="played enemy card">
+            </div>
+        </section>
+        <section aria-details="lower section">
+            <section id="playerSelectedCard">
+                <img alt="player played card">
+            </section>
+            <section id="playerCards">
+                {{#each playercard}}
+                <img data-defense="{{defense}}" data-strength="{{strength}}" src="{{src}}">
+                {{/each}}
+            </section>
+            <section>
+                <h1 id="turnTitle">Your Turn</h1>
+                <div id="buttonSection">
+                    <button id="attackButton">Attack</button>
+                    <button id="defenseButton">Defend</button>
+                    <button id="skipButton">Skip</button>
+                </div>
+            </section>
+        </section>
+    </section>
+</section>
