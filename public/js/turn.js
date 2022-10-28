@@ -1,3 +1,7 @@
+const enemyAssemble = async () => {
+    
+}
+
 function turnBased () {
     const playerAlive = gameStats.player.isAlive();
     const aiAlive = gameStats.player.isAlive();

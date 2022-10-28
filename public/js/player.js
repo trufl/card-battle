@@ -1,8 +1,7 @@
 class Player {
-    constructor(deckId, cards, health = 300) {
-        this.health = health;
+    constructor(deckId) {
         this.deckId = deckId;
-        this.cards = cards;
+        this.health = 1000;
         this.lastAttack = true;
     }
 
@@ -40,3 +39,4 @@ class Player {
     }
 
 }
+
