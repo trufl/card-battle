@@ -8,6 +8,8 @@ class User extends Model {
   }
 }
 
+// user needs alt deck 
+
 User.init(
   {
     id: {
@@ -35,6 +37,26 @@ User.init(
         len: [8],
       },
     },
+    deck_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'deck',
+        key: 'id',
+        unique: false,
+      },
+    },
+    // altDeck_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   references: {
+    //     model: 'deck',
+    //     key: 'id',
+    //     unique: false,
+    //   }
+    // }
+
+    
     
   },
   {
