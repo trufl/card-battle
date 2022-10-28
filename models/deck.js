@@ -17,8 +17,8 @@ Deck.init(
       type: DataTypes.STRING,
       
       },
-    cards: {
-        card_id: dataTypes.INTEGER,
+    card_id: {
+      type: DataTypes.INTEGER,
 
     }
 },
