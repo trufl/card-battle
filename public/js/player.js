@@ -1,27 +1,22 @@
 class Player {
-    constructor(health = 300, deckId, cards) {
+    constructor(deckId, cards, health = 300) {
         this.health = health;
         this.deckId = deckId;
         this.cards = cards;
+        this.lastAttack = true;
     }
 
-    attack(opp,card,hitpoints) {
-        if(card.health > hitpoints) {
-            card.health = card.health - hitpoints;
+    attack(opp, hitpoints) {
+        this.lastAttack = true;
+        if(opp.health > hitpoints) {
+            opp.health = opp.health - hitpoints;
         } else {
-            const newHit = hitpoints - card.health;
-            card.health = 0;
-            
-            if(opp.health > newHit) {
-                opp.health = opp.health - newHit;
-            } else {
-                opp.health = 0;
-            }
+            opp.health = 0;
         }
     }
 
-    defend(card, defensePts) {
-        card.health += defensePts;
+    defend(defensePts) {
+        this.health += defensePts;
     }
 
     checkHealth() {
@@ -35,4 +30,13 @@ class Player {
             return false;
         }
     }
+
+    checkLastMove() {
+        if(this.lastAttack){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
