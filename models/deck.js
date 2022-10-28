@@ -18,7 +18,7 @@ Deck.init(
       
       },
     cards: {
-        card_id: dataTypes.INTEGER,
+        card_id: DataTypes.INTEGER,
 
     }
 },
