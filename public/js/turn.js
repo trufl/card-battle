@@ -47,7 +47,7 @@ function getAiChoice() {
             }
         }
     } else {
-        endGame();
+        process.end(0);
     }
 
 }
