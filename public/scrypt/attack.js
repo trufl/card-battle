@@ -6,23 +6,28 @@ const $skipButton = document.getElementById('skipButton');
 
 
 function attackCb(){
-    const enemyCard = document.getElementById('playedCardSection').children[0];
-    const playedCard = document.getElementById('playedCardSection').children[1];
-    const strength = playedCard.getAttribute('data-strength');
+    const strength = document.getElementById('playerSelectedCard').children[0].getAttribute('data-attack');
     
-    GameStats.player.attack(GameStats.ai, enemyCard, strength );
+    gameStats.player.attack(gameStats.ai, strength );
+
+    document.getElementById('buttonSection').style.display = 'none';
+
     turnBased();
 };
 
 function defendCb(){
-    const playedCard = document.getElementById('playedCardSection').children[1];
-    const defense = playedCard.getAttribute('data-defense');
+    const defense = document.getElementById('playerSelectedCard').children[0].getAttribute('data-defense');
 
-    GameStats.player.defend(playedCard, defense);
+    gameStats.player.defend(defense);
+
+    document.getElementById('buttonSection').style.display = 'none';
+
     turnBased();
 };
 
 function skipCb(){
+    document.getElementById('buttonSection').style.display = 'none';
+    
     turnBased();
 };
 
@@ -33,7 +38,8 @@ const aiAttack = () => {
     const playedCard = document.getElementById('playedCardSection').children[1];
     const strength = aiCard.getAttribute('data-strength');
     
-    GameStats.ai.attack(GameStats.player, playedCard, strength );
+    gameStats.ai.attack(gameStats.player, playedCard, strength );
+    document.getElementById('buttonSection').style.display = 'block';
     turnBased();
 };
 
@@ -41,17 +47,19 @@ const aiDefend = () => {
     const aiCard = document.getElementById('playedCardSection').children[0];
     const defense = aiCard.getAttribute('data-defense');
 
-    GameStats.player.defend(aiCard, defense);
+    gameStats.player.defend(aiCard, defense);
+    document.getElementById('buttonSection').style.display = 'block';
     turnBased();
 };
 
-function aiLastMove(){
-    if(GameStats.ai.checkLastMove()){
-        aiDefend();
-    }else{
-        aiAttack();
-    };
-};
+// function aiLastMove(){
+//     if(GameStats.ai.checkLastMove()){
+//         aiDefend();
+//     }else{
+//         aiAttack();
+//     };
+//     document.getElementById('buttonSection').style.display = 'block';
+// };
 
 $attackButton.addEventListener('click', attackCb);
 $defendButton.addEventListener('click', defendCb);
