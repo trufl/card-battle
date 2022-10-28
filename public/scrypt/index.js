@@ -15,23 +15,30 @@ function turnBased () {
 
     if(turn) {
         gameStats.setTurn(false);
+        console.log("Player attacking")
         attackCb();
     } else {
         gameStats.setTurn(true);
+        console.log("ai attacking")
         aiAttack();
     }
 };
 
+var strength = 50
 function attackCb(){
     const enemyCard = 1
     //const playedCard = 2
-    const strength = 50
     // const enemyCard = document.getElementById('playedCardSection').children[0];
     // const playedCard = document.getElementById('playedCardSection').children[1];
     // const strength = playedCard.getAttribute('data-strength');
     
-    gameStats.player.attack(gameStats.ai, enemyCard, strength );
-    turnBased();
+    player.attack(ai, strength );
+    console.log(ai.health)
+    if(ai.checkHealth()){
+        turnBased();
+    }else{
+        console.log("player has died")
+    }
 };
 
 // function defendCb(){
@@ -53,8 +60,13 @@ const aiAttack = () => {
     const playedCard = 1
     const strength = 50
     
-    gameStats.ai.attack(gameStats.player, playedCard, strength );
-    turnBased();
+    ai.attack(player, strength );
+    console.log(player)
+    if(player.checkHealth()){
+        turnBased();
+    }else{
+        console.log("ai has died")
+    }
 };
 
 // const aiDefend = () => {
@@ -72,7 +84,14 @@ const aiAttack = () => {
 //         aiAttack();
 //     };
 // };
+turnBased();
+// while(gameStats.player.isAlive() && gameStats.ai.isAlive()){
+//     turnBased();
+// }
+// while(player.isAlive() && ai.isAlive()){
 
-while(gameStats.player.isAlive() && gameStats.ai.isAlive()){
-    turnBased();
-}
+//     player.attack(ai, strength );
+//     console.log(ai.checkHealth())
+//     ai.attack(player, strength );
+//     console.log(player.checkHealth())
+// }
