@@ -27,7 +27,7 @@ Deck.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "card",
+    modelName: "deck",
   },
 );
 
