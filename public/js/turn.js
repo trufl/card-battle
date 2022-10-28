@@ -12,8 +12,10 @@ function turnBased () {
             gameStats.setTurn(true);
             getAiChoice();
         }
-    } else {
-        endGame();
+    } else if(playerAlive){
+        endGame(gameStats.player);
+    } else if(aiAlive) {
+        endGame(gameStats.ai);
     }
 }
 
@@ -25,20 +27,20 @@ function getAiChoice() {
         const health = gameStats.ai.checkHealth();
 
         if(health > 100) {
-            attackCb();
+            aiAttack();
         } else {
-            const play = Math.floor(Math.random * 3) + 1
 
             const lastAttack = gameStats.ai.checkLastMove();
 
             if(!lastAttack) {
-                attackCb();
+                aiAttack();
             } else {
-                
+                const play = Math.floor(Math.random() * 2) + 1
+
                 if(play === 1){
-                    attackCb();
+                    aiAttack();
                 } else if (play === 2){
-                    defendeCb();
+                    aiDefend();
                 } else {
                     console.log(`Error, play = ${play}`);
                 }
