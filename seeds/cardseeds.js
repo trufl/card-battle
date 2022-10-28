@@ -1,5 +1,4 @@
-const { DefaultDeserializer } = require('v8');
-const { Cards } = require('../models');
+const { Cards, Card } = require('../models');
 
 const cardData = [
     {
@@ -40,39 +39,43 @@ const cardData = [
     image: 'card-5-done.gif'
 },
 {
-    card_name: 'card6',
+    card_name: 'Kobe Bryant',
     card_id: 6,
-    attackStat: '',
-    DefenseStat: '',
-    image: 'card6-cardimg.jpg'
+    attackStat: '150',
+    DefenseStat: '150',
+    image: 'card-6-done.gif'
 },
 {
-    card_name: 'card7',
+    card_name: 'Michael Jordan in 2072',
     card_id: 7,
-    attackStat: '',
-    DefenseStat: '',
-    image: 'card7-cardimg.jpg'
+    attackStat: '200',
+    DefenseStat: '200',
+    image: 'card-7-done.gif'
 },
 {
-    card_name: 'card8',
+    card_name: 'Lil Piggy',
     card_id: 8,
-    attackStat: '',
-    DefenseStat: '',
-    image: 'card8-cardimg.jpg'
+    attackStat: '75',
+    DefenseStat: '175',
+    image: 'card-8-done.gif'
 },
 {
-    card_name: 'card9',
+    card_name: 'Teleport Guy',
     card_id: 9,
-    attackStat: '',
-    DefenseStat: '',
-    image: 'card9-cardimg.jpg'
+    attackStat: '75',
+    DefenseStat: '250',
+    image: 'card-9-done.gif'
 },
 {
-    card_name: 'card10',
+    card_name: 'Fire Breathing Pumpkin',
     card_id: 10,
-    attackStat: '',
-    DefenseStat: '',
-    image: 'card10-cardimg.jpg'
+    attackStat: '150',
+    DefenseStat: '75',
+    image: 'card-10-done.gif'
 },
 
-]
+];
+
+const seedCards = () => Card.bulkCreate(cardData);
+
+module.exports = seedCards;
