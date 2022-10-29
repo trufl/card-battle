@@ -13,7 +13,7 @@ Card.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    card_name: {
+    cardName: {
       type: DataTypes.STRING,
       
       },
