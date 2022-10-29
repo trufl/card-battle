@@ -15,7 +15,13 @@ Scores.init(
     },
     User_id: {
       type: DataTypes.INTEGER,
-      allowNull:false
+      allowNull: false,
+      // foreignKey: 'user_id',
+      references: {
+        model: 'user',
+        key: 'id',
+        unique: false
+      },
       
       },
 

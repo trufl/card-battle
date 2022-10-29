@@ -9,32 +9,40 @@ const sequelize = require("../config/connection");
 //   foreignKey: "user_id",
 // });
 
-// User.hasMany(Scores, {
-//     foreignKey: "scores_id"
-// })
+User.hasMany(Scores, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE',
+});
 
-// User.hasMany(Card, {
-//   foreignKey: "card_id",
-// });
+User.hasMany(Card, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
+});
 
-// User.hasMany(Deck,{
-//     foreignKey: "deck_id",
-// })
+User.hasMany(Deck,{
+    foreignKey: 'user_id',
+    onDelete: "CASCADE",
+});
 
-// Card.belongsToMany(User, {
-//     foreignKey: "user_id",
+Card.belongsToMany(User, {
+    foreignKey: "user_id",
 
-// });
+});
 
-// Deck.belongsToMany(User, {
-//     foreignKey: "user_id",
+Deck.belongsToMany(User, {
+    foreignKey: "user_id",
 
-// });
+});
 
-// Card.belongsToMany(Deck, {
-//     foreignKey: "deck_id"
+Card.belongsToMany(Deck, {
+    foreignKey: "deck_id"
 
-// });
+});
+
+Deck.hasMany(Card, {
+    foreignKey: 'card_id',
+    onDelete: 'CASCADE',
+});
 
 module.exports = {
 Card,
