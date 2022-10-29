@@ -1,12 +1,65 @@
+const { Player, Enemy, GameStats} = require('./classes');
 const $playerCards = document.querySelectorAll('playerCards');
 const $attackButton = document.getElementById('attackButton');
 const $defendButton = document.getElementById('defenseButton');
 const $skipButton = document.getElementById('skipButton');
+let gameStats;
 
 const init = async () => {
+    //when we render the game page set data-newGame attribute in one of
+    //the html elements to true if it is a new game and false if previous game exists.
+    //In the back end we can set a session variable called newGame and set it to false when new game is
+    //started and then false when the game is finished
+    const isNewGame = document.querySelector('#title').getAttribute('data-newGame');
+
+    if(isNewGame) {
+        const deckId = document.querySelector('#player-img').getAttribute('data-deckId');
+        const player = new Player(deckId);
+        const ai = await enemyAssemble();
+        gameStats = new GameStats(player, ai);
+        turnBased();
+    } else {
+        gameStats = await getPrevGame();
+        turnBased();
+    }
 }
 
-const turnBased = () => {
+const getCards = async (deckId) => {
+    const cards = await fetch(`/api/game-play/enemy-cards/${deckId}`,{
+        method: 'GET'
+    }
+    );
+
+    return cards;
+}
+
+const saveGame = async () => {
+    //TODO: refactor to work with backend
+    /**
+     * need to decide where to get userId from. Should link back to users
+     * table or sessions table?
+     * await fetch('/api/game-play/save-game/:userId' {
+     * method: POST,
+     * headers: [ "content-type": "application-json" ],
+     * body: {
+     *  playerHealth: gameStats.player.checkHealth(),
+     *  playerDeckId: gameStats.player.getDeckId(),
+     *  enemyId: gameStats.ai.getEnemyId(),
+     *  enemyHealth: gameStats.ai.checkHealth(),
+     *  enemyDeckId: gameStats.ai.getDeckId(),
+     * }
+     * })
+     * .then((res) => {
+     *  if(res.ok){
+     *      console.log('game saved');
+     *  }
+     * })
+     * .catch((err) => console.error(err));
+     */
+}
+
+const turnBased = async() => {
+    // await saveGame();
     const playerAlive = gameStats.player.isAlive();
     const aiAlive = gameStats.ai.isAlive();
 
@@ -21,9 +74,9 @@ const turnBased = () => {
             getAiChoice();
         }
     } else if(playerAlive){
-        endGame(gameStats.player);
+        playerVictory();
     } else if(aiAlive) {
-        endGame(gameStats.ai);
+        aiVictory();
     }
 }
 
@@ -87,8 +140,10 @@ const renderPlayedCard = (e) => {
 }
 
 const getPlayerChoice = () => {
-    document.getElementById('turnTitle').textContent = 'Your turn';
-    document.getElementById('playerCards').addEventListener('dblclick', renderPlayedCard);
+    if(gameStats.player.isAlive()){
+        document.getElementById('turnTitle').textContent = 'Your turn';
+        document.getElementById('playerCards').addEventListener('dblclick', renderPlayedCard);
+    }
 }
 
 const aiAttack = () => {
@@ -136,8 +191,18 @@ const getAiChoice = () => {
                 }
             }
         }
-    } else {
-        endGame();
     }
+}
 
+const playerVictory = () => {
+    // TODO: Set up timer so the the user can see they won and maybe display some
+    // TODO: some animation/modal/picture while timer is active then relocate user
+    window.location.replace('/game-play/player-victory');
+}
+
+const enemyVictory = () => {
+
+    // TODO: Set up timer so the the user can see they lost and maybe display some
+    // TODO: some animation/modal/picture while timer is active then relocate user
+    window.location.replace('/game-play/enemy-victory');
 }

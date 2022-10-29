@@ -41,6 +41,10 @@ class Player {
             return false;
         }
     }
+
+    getDeckId() {
+        return this.deckId;
+    }
 }
 
 class Enemy extends Player {
@@ -76,6 +80,15 @@ class Enemy extends Player {
     }
 
     getLastCard() {
-        return this.lastCard
+        return this.lastCard;
     }
+
+    getEnemyId() {
+        return this.enemyId;
+    }
+}
+
+module.exports = {
+    Player,
+    Enemy,
 }
