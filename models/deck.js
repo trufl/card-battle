@@ -21,20 +21,18 @@ Deck.init(
       }
 
       },
-    card_id: {
+    card_id:{
       type: DataTypes.INTEGER,
-      references: {
-        model:'card',
-        key: 'id',
-      }
-    },
+
+    } 
+
 },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "deck",
+    modelName: "card",
   },
 );
 
