@@ -23,9 +23,11 @@ Deck.init(
       },
     card_id:{
       type: DataTypes.INTEGER,
-
-    } 
-
+      references: {
+        model:'card',
+        key: 'id',
+      }
+    },
 },
   {
     sequelize,

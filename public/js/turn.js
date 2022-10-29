@@ -57,7 +57,7 @@ function renderPlayedCard(e){
     const clickedCard = e.target.getAttribute('src');
     const clickedCardAttack = e.target.getAttribute('data-attack');
     const clickedCardDefense = e.target.getAttribute('data-defense');
-    const playSection = document.getElementById('playedCardSection');
+    const playSection = document.getElementById('playerSelectedCard');
     const playedCard = document.createElement('img');
     
     playedCard.setAttribute('src', clickedCard);
