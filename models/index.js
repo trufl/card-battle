@@ -17,6 +17,8 @@ User.hasMany(Scores, {
 // });
 
 User.hasMany(Deck,{
+
+    //  creates two user ids 
     foreignKey: 'user_id',
     onDelete: "SET NULL",
 });

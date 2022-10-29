@@ -18,16 +18,57 @@ Deck.init(
       references: {
         model:'user',
         key: 'id',
-      }
+      },
 
       },
-    // card_id: {
+    // cardId: {
     //   type: DataTypes.INTEGER,
     //   references: {
     //     model:'card',
     //     key: 'id',
     //   }
     // },
+    cardOne: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'card',
+        key: 'id',
+      },
+      
+    },
+    cardTwo: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'card',
+        key: 'id',
+      },
+      
+    },
+    cardThree: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'card',
+        key: 'id',
+      },
+      
+    },
+    cardFour: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'card',
+        key: 'id',
+      },
+      
+    },
+    cardFive: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'card',
+        key: 'id',
+      },
+      
+    },
+    
 },
   {
     sequelize,
