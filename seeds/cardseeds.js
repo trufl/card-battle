@@ -1,4 +1,4 @@
-const { Cards, Card } = require('../models');
+const { Card } = require('../models');
 
 const cardData = [
     {
@@ -77,5 +77,5 @@ const cardData = [
 ];
 
 const seedCards = () => Card.bulkCreate(cardData);
-
+seedCards();
 module.exports = seedCards;
