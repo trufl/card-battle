@@ -33,7 +33,7 @@ Card.init(
             isNumeric: true,
         },
     }, 
-    image: {
+    filename: {
         type: DataTypes.STRING,
         allowNull: false,
     }

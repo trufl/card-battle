@@ -1,6 +1,37 @@
 <!-- not compltete -->
 
-<section class="container">
+{{!-- <section class="container"> --}}
+<h3 class="card-selection"> Choose Your Hand</h3>
+<!-- need alt cards -->
+{{!-- {{#each card}}
+<div class="row align-center mb-5">
+    <div class="col-md-6">
+    <!-- display card as selectable option -->
+    {{card.image}}
+
+    </div>
+
+</div>
+{{/each}}
+</section> --}}
+
+<!-- display users current cards -->
+<section id="current-cards" class="contaimer">
+<div class="row align-center mb-5">
+    <div class="col-md-6">
+        
+    {{#each cards as |card|}}
+  <img src="/images/{{card.[0].filename}}" alt="{{card.description}}">
+        
+    </div>
+</div>
+{{/each}}
+</section>
+
+
+<!-- not compltete -->
+
+{{!-- <section class="container">
 <h3 class="card-selection"> Choose Your Hand</h3>
 <!-- need alt cards -->
 {{#each card}}
@@ -23,4 +54,4 @@
         {{{card.image}}}
     </div>
 </div>
-</section>
+</section> --}}

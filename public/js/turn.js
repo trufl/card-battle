@@ -51,3 +51,24 @@ function getAiChoice() {
     }
 
 }
+
+
+function renderPlayedCard(e){
+    const clickedCard = e.target.getAttribute('src');
+    const clickedCardAttack = e.target.getAttribute('data-attack');
+    const clickedCardDefense = e.target.getAttribute('data-defense');
+    const playSection = document.getElementById('playerSelectedCard');
+    const playedCard = document.createElement('img');
+    
+    playedCard.setAttribute('src', clickedCard);
+    playedCard.setAttribute('data-attack', clickedCardAttack);
+    playedCard.setAttribute('data-defense', clickedCardDefense);
+    
+    playSection.appendChild(playedCard);
+    document.getElementById('buttonSection').style.display = 'block';
+};
+
+function getPlayerChoice(){
+    document.getElementById('turnTitle').textContent = 'Your turn';
+    document.getElementById('playerCards').addEventListener('dblclick', renderPlayedCard);
+};
