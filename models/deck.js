@@ -15,12 +15,19 @@ Deck.init(
     },
     user_id: {
       type: DataTypes.STRING,
-      
+      references: {
+        model:'user',
+        key: 'id',
+      }
+
       },
     card_id: {
       type: DataTypes.INTEGER,
-
-    }
+      references: {
+        model:'card',
+        key: 'id',
+      }
+    },
 },
   {
     sequelize,
