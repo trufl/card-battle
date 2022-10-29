@@ -9,7 +9,7 @@
     </section>
     <section aria-details="upper section">
         <section aria-details="card section">
-            {{#each enemycard}}
+            {{#each card}}
             <img data-defense="{{defense}}" data-strength="{{strength}}" src="{{src}}">
             {{/each}}
         </section>
@@ -28,7 +28,7 @@
                 {{/each}}
             </section>
             <section>
-                <h1 id="turnTitle">Your Turn</h1>
+                <h1 class="font-extrabold" id="turnTitle">Your Turn</h1>
                 <div id="buttonSection">
                     <button id="attackButton">Attack</button>
                     <button id="defenseButton">Defend</button>

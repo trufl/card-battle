@@ -30,8 +30,7 @@ router.get('/battle', async (req, res) =>{
         };
         //TODO: Get the players cards.
         res.render('battle', {
-            cards,
-            playerCards
+            cards
         })
     }catch(err){
         res.status(500).json(err)
