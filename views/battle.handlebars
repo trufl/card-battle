@@ -1,40 +1,57 @@
-<section>
-    <img alt="background image"> 
-    <section>
-        <img alt="player two">
+<section id="entireGameSection" class="bg-[url('/images/cardBattle/full-screen-map-bare.png')] bg-contain bg-no-repeat w-[80vw] h-[80vh] flex ">
+    <section class=" flex flex-col w-40 m-0 justify-between">
+        <img alt="player two" src="https://via.placeholder.com/150" class="w-36">
         <div>
-            <img alt="attack/defend gif">
+            <img src="/images/cardBattle/defend-animation.gif" alt="attack/defend gif">
         </div>
-        <img alt="player one">
+        <img alt="player one" src="https://via.placeholder.com/150" class="w-36 flex-end">
     </section>
-    <section aria-details="upper section">
-        <section aria-details="card section">
-            {{#each enemycard}}
-            <img data-defense="{{defense}}" data-strength="{{strength}}" src="{{src}}">
-            {{/each}}
-        </section>
-        <section aria-details="below cards"  >
-            <div>
-                <img alt="played enemy card">
-            </div>
-        </section>
-        <section aria-details="lower section">
-            <section id="playerSelectedCard">
-                <img alt="player played card">
-            </section>
-            <section id="playerCards">
-                {{#each playercard}}
+
+    <section class=" flex flex-col h-full">
+
+        <section aria-details="upper section" class="flex-row w-full h-2/4">
+            <section aria-details="card section" class="flex h-2/4">
+                {{#each cards}}
                 <img data-defense="{{defense}}" data-strength="{{strength}}" src="{{src}}">
                 {{/each}}
+                <img data-defense="" data-strength="" src="/images/cardBattle/card-1-done.gif" class="my-2 mx-5">
+                <img data-defense="" data-strength="" src="/images/cardBattle/card-2-done.gif" class="my-2 mx-5">
+                <img data-defense="" data-strength="" src="/images/cardBattle/card-3-done.gif" class="my-2 mx-5">
+                <img data-defense="" data-strength="" src="/images/cardBattle/card-4-done.gif" class="my-2 mx-5">
+                <img data-defense="" data-strength="" src="/images/cardBattle/card-5-done.gif" class="my-2 mx-5">
             </section>
-            <section>
-                <h1 id="turnTitle">Your Turn</h1>
-                <div id="buttonSection">
-                    <button id="attackButton">Attack</button>
-                    <button id="defenseButton">Defend</button>
-                    <button id="skipButton">Skip</button>
-                </div>
+            <section aria-details="below cards" class="flex h-2/4 w-full justify-center" >
+                <img data-defense="" data-strength="" src="/images/cardBattle/card-5-done.gif" class="my-2">
             </section>
         </section>
+
+        <section class="flex flex-row w-full h-2/4">
+
+            <section class="flex-col w-4/5 h-full">
+                <section id="playerSelectedCard" class="flex h-2/4 w-full justify-center">
+                    <img data-defense="" data-strength="" src="/images/cardBattle/card-3-done.gif" class="my-2">
+                </section>
+                <section id="playerCards" class="flex h-2/4 w-full">
+                    {{#each playerDeck}}
+                    <img data-defense="{{defense}}" data-strength="{{strength}}" src="{{src}}">
+                    {{/each}}
+                    <img data-defense="" data-strength="" src="/images/cardBattle/card-1-done.gif" class="my-2 mx-5">
+                    <img data-defense="" data-strength="" src="/images/cardBattle/card-2-done.gif" class="my-2 mx-5">
+                    <img data-defense="" data-strength="" src="/images/cardBattle/card-3-done.gif" class="my-2 mx-5">
+                    <img data-defense="" data-strength="" src="/images/cardBattle/card-4-done.gif" class="my-2 mx-5">
+                    <img data-defense="" data-strength="" src="/images/cardBattle/card-5-done.gif" class="my-2 mx-5">
+                </section>
+            </section>
+            <section class="h-full w-1/5 flex-col mt-1 ">
+                <h1 class="font-extrabold " id="turnTitle">Your Turn</h1>
+                <button class="btn-game mx-0 w-2/4 " id="attackButton">Attack</button>
+                <button class="btn-game mx-0 w-2/4 " id="defenseButton">Defend</button>
+                <button class="btn-game mx-0 w-2/4 " id="skipButton">Skip</button>
+
+            </section>
+
+        </section>
+
     </section>
 </section>
+

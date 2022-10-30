@@ -79,3 +79,5 @@ const cardData = [
 const seedCards = () => Card.bulkCreate(cardData);
 seedCards();
 module.exports = seedCards;
+
+
