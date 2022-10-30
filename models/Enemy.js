@@ -16,6 +16,13 @@ Enemy.init(
     image: {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+    deckId: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'enemydecks',
+            key: 'id',
+        }
     }
 },
   {
