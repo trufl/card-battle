@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Deck, Card } = require('../../models');
 
 router.post('/login', async (req, res) => {
     try {
@@ -65,5 +65,18 @@ router.post('/signup', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+router.post('/newdeck', async (req,res) =>{
+    try{
+        const newDeck = await Deck.create(1);
+        for(i=0; i< 5; i++){
+            const card = await Card.create(req.body.cards[i])
+            await newDeck.addCard(card, {through: {selfGranted: false}});
+        };
+        res.status(200).json("Created new deck with cards supplied");
+    }catch(err){
+        res.status(500).json(err);
+    };
+})
 
 module.exports = router;
