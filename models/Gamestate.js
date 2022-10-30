@@ -11,6 +11,13 @@ Gamestate.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    playerId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      }
+    },
     playerHealth: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -37,15 +44,6 @@ Gamestate.init(
     enemyHealth: {
         type: DataTypes.INTEGER,
         allowNull: false,
-    },
-    // Foreign key for enemy id
-    enemyDeckId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'enemydeck',
-          key: 'id',
-        }
     },
   },
   {
