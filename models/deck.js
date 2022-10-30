@@ -21,13 +21,13 @@ Deck.init(
       }
 
       },
-    card_one:{
-      type: DataTypes.INTEGER,
-      references: {
-        model:'card',
-        key: 'id',
-      }
-    },
+    // card_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model:'card',
+    //     key: 'id',
+    //   }
+    // },
 },
   {
     sequelize,

@@ -2,76 +2,76 @@ const { Card } = require('../models');
 
 const cardData = [
     {
-    card_name: 'Santa With a Sword',
-    card_id: 1,
+    cardName: 'Santa With a Sword',
+    cardId: 1,
     attackStat: '100',
-    DefenseStat: '50',
-    image: 'card-1-done.gif'
+    defenseStat: '50',
+    filename: 'card-1-done.gif',
 
-    // image relative to public / assets/images
+    // filename relative to public / assets/filenames
 },
 {
-    card_name: 'Spookey Spider',
-    card_id: 2,
+    cardName: 'Spookey Spider',
+    cardId: 2,
     attackStat: '250',
-    DefenseStat: '0',
-    image: 'card-2-done.gif'
+    defenseStat: '0',
+    filename: 'card-2-done.gif',
 },
 {
-    card_name: 'Isaiah',
-    card_id: 3,
+    cardName: 'Isaiah',
+    cardId: 3,
     attackStat: '100',
-    DefenseStat: '100',
-    image: 'card-3-done.gif'
+    defenseStat: '100',
+    filename: 'card-3-done.gif',
 },
 {
-    card_name: 'Scary Centipede',
-    card_id: 4,
+    cardName: 'Scary Centipede',
+    cardId: 4,
     attackStat: '125',
-    DefenseStat: '25',
-    image: 'card-4-done.gif'
+    defenseStat: '25',
+    filename: 'card-4-done.gif',
 },
 {
-    card_name: 'Fly',
-    card_id: 5,
+    cardName: 'Fly',
+    cardId: 5,
     attackStat: '0',
-    DefenseStat: '150',
-    image: 'card-5-done.gif'
+    defenseStat: '150',
+    filename: 'card-5-done.gif',
 },
 {
-    card_name: 'Kobe Bryant',
-    card_id: 6,
+    cardName: 'Kobe Bryant',
+    cardId: 6,
     attackStat: '150',
-    DefenseStat: '150',
-    image: 'card-6-done.gif'
+    defenseStat: '150',
+    filename: 'card-6-done.gif',
 },
 {
-    card_name: 'Michael Jordan in 2072',
-    card_id: 7,
+    cardName: 'Michael Jordan in 2072',
+    cardId: 7,
     attackStat: '200',
-    DefenseStat: '200',
-    image: 'card-7-done.gif'
+    defenseStat: '200',
+    filename: 'card-7-done.gif',
 },
 {
-    card_name: 'Lil Piggy',
-    card_id: 8,
+    cardName: 'Lil Piggy',
+    cardId: 8,
     attackStat: '75',
-    DefenseStat: '175',
-    image: 'card-8-done.gif'
+    defenseStat: '175',
+    filename: 'card-8-done.gif',
 },
 {
-    card_name: 'Teleport Guy',
-    card_id: 9,
+    cardName: 'Teleport Guy',
+    cardId: 9,
     attackStat: '75',
-    DefenseStat: '250',
-    image: 'card-9-done.gif'
+    defenseStat: '250',
+    filename: 'card-9-done.gif',
 },
 {
-    card_name: 'Fire Breathing Pumpkin',
-    card_id: 10,
+    cardName: 'Fire Breathing Pumpkin',
+    cardId: 10,
     attackStat: '150',
-    DefenseStat: '75',
-    image: 'card-10-done.gif'
+    defenseStat: '75',
+    filename: 'card-10-done.gif',
 },
 
 ];
