@@ -20,7 +20,7 @@ Enemy.init(
     deckId: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'enemydecks',
+            model: 'enemydeck',
             key: 'id',
         }
     }
