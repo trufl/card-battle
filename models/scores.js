@@ -33,7 +33,7 @@ Scores.init(
     },
 
     date: {
-        type: DataTypes.DATEONLY,
+        type: DataTypes.DATE,
         allowNull: false,
         
     },

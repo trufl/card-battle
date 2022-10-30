@@ -7,7 +7,7 @@ const sequelize = require("../config/connection");
 
 
 User.hasMany(Scores, {
-    foreignKey: 'user_id',
+    foreignKey: 'userId',
     onDelete: 'CASCADE',
 });
 
