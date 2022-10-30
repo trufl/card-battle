@@ -13,7 +13,7 @@ Scores.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    userId: {
+    user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
@@ -32,18 +32,13 @@ Scores.init(
       },
     },
 
-    date: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        
-    },
 },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: "card",
+    modelName: "score",
   },
 );
 

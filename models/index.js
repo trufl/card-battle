@@ -3,41 +3,31 @@ const Scores = require("./scores")
 const Deck = require("./deck")
 const User = require("./Users")
 const Card = require("./cards")
+const Deck_Card = require('./deckCard')
 const sequelize = require("../config/connection");
 
 
 User.hasMany(Scores, {
-    foreignKey: 'userId',
-    onDelete: 'CASCADE',
+    foreignKey: "user_id"
+});
+Scores.belongsTo(User, {
+    foreignKey: "user_id"
 });
 
-// User.hasMany(Card, {
-//   foreignKey: 'user_id',
-//   onDelete: 'CASCADE',
-// });
-
-User.hasMany(Deck,{
-
-    //  creates two user ids 
-    foreignKey: 'user_id',
-    onDelete: "SET NULL",
+User.hasMany(Deck, {
+    foreignKey: "user_id"
+});
+Deck.belongsTo(User, {
+    foreignKey: "user_id"
 });
 
-// Card.belongsToMany(User, {
-//     through: Deck
-
-// });
+Deck.belongsToMany(Card,{
+    through: Deck_Card
+});
 
 Card.belongsToMany(Deck, {
-    through: 'DeckCards'
-
-});
-
-Deck.belongsToMany(Card, {
-    through: 'DeckCards'
-    // foreignKey: 'card_id',
-    // onDelete: 'CASCADE',
-});
+    through: Deck_Card
+})
 
 module.exports = {
 Card,

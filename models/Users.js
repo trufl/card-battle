@@ -37,27 +37,7 @@ User.init(
         len: [8],
       },
     },
-    deckId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'deck',
-        key: 'id',
-        unique: false,
-      },
-    },
-    // altDeck_id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   references: {
-    //     model: 'deck',
-    //     key: 'id',
-    //     unique: false,
-    //   }
-    // }
 
-    
-    
   },
   {
     hooks: {

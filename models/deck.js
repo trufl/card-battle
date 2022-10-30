@@ -13,69 +13,20 @@ Deck.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    userId: {
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
         model:'user',
         key: 'id',
+        },
       },
-
-      },
-    // cardId: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model:'card',
-    //     key: 'id',
-    //   }
-    // },
-    cardOne: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'card',
-        key: 'id',
-      },
-      
-    },
-    cardTwo: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'card',
-        key: 'id',
-      },
-      
-    },
-    cardThree: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'card',
-        key: 'id',
-      },
-      
-    },
-    cardFour: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'card',
-        key: 'id',
-      },
-      
-    },
-    cardFive: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'card',
-        key: 'id',
-      },
-      
-    },
-    
 },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "card",
+    modelName: "deck",
   },
 );
 
