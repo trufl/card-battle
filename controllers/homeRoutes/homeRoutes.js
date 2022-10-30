@@ -24,16 +24,16 @@ router.get('/battle', async (req, res) =>{
     try{
         let playerDeck;
         let cards = await Card.findAll({raw: true});
-        console.log(cards)
         for(i=0;i<5;i++){
             const random = Math.floor(Math.random() * 10);
             cards.splice(random-i, 1);
         };
-        //TODO: Get the players cards.
+        //The where clause in this deck.findAll needs to be replaced with some sort of parameter to indicate what deck they chose
         if(req.session.logged_in){
-            playerDeck = await Deck.findOne({
-                where: {user_id: req.session.user_id},
-                include: Card
+            playerDeck = await Deck.findAll({
+                raw: true,
+                where: {id: 1},
+                include: Card,
             })
         }else{
             playerDeck = await Card.findAll({raw: true});
@@ -43,10 +43,10 @@ router.get('/battle', async (req, res) =>{
             };
         };
 
-        console.log(playerDeck);
         res.render('battle', {
             cards,
-            playerDeck
+            playerDeck,
+            logged_in: req.session.logged_in
         })
     }catch(err){
         res.status(500).json(err)

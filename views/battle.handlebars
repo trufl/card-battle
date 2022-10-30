@@ -29,11 +29,11 @@
                 <section id="playerCards" class="flex h-2/4 w-full">
                     {{#if logged_in}}
                     {{#each playerDeck}}
-                    <img data-defense="{{defenseStat}}" data-strength="{{strengthStat}}" src="/images/cardBattle/{{filename}}">
+                    <img data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}" src="/images/cardBattle/{{'cards.filename'}}">
                     {{/each}}
                     {{else}}
                     {{#each playerDeck}}
-                    <img data-defense="{{defenseStat}}" data-strength="{{strengthStat}}" src="/images/cardBattle/{{filename}}">
+                    <img data-defense="{{defenseStat}}" data-strength="{{attackStat}}" src="/images/cardBattle/{{filename}}">
                     {{/each}}
                     {{/if}}
                 </section>
