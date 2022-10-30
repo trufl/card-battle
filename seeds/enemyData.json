@@ -1,0 +1,10 @@
+[
+    {
+        "image": "/images/enemy1-img",
+        "deckId": 1
+    },
+    {
+        "image": "/images/enemy2-img",
+        "deckId": 2
+    }
+]

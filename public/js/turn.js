@@ -1,6 +1,20 @@
+const enemyAssemble = async () => {
+    //TODO: can we handle picking the enemy in the back end before the game is rendered
+    // getCards() should be a fetch call to an api endpoint that returns a preset deck
+    //* const cards = await getCards();
+    //* const enemyIdData = document.querySelector('#enemy-Img').getAttribute('data-enemy-id');
+    // depending if the previous value returns as string 
+    //* const enemyId = parseInt(enemyIdData);
+
+    // cards.id will change depending on data returned from getCards()
+    //* ai = new Enemy(enemyId, cards.id, cards);
+
+    //* return ai;
+}
+
 function turnBased () {
     const playerAlive = gameStats.player.isAlive();
-    const aiAlive = gameStats.player.isAlive();
+    const aiAlive = gameStats.ai.isAlive();
 
     if(playerAlive && aiAlive) {
         const turn = gameStats.getTurn();
@@ -24,6 +38,7 @@ function getAiChoice() {
     const isAlive = gameStats.ai.isAlive();
 
     if(isAlive) {
+        const card = gameStats.ai.pickCard();
         const health = gameStats.ai.checkHealth();
 
         if(health > 100) {
@@ -66,9 +81,9 @@ function renderPlayedCard(e){
     
     playSection.appendChild(playedCard);
     document.getElementById('buttonSection').style.display = 'block';
-};
+}
 
 function getPlayerChoice(){
     document.getElementById('turnTitle').textContent = 'Your turn';
     document.getElementById('playerCards').addEventListener('dblclick', renderPlayedCard);
-};
+}
