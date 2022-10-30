@@ -37,15 +37,15 @@ User.init(
         len: [8],
       },
     },
-    deck_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'deck',
-        key: 'id',
-        unique: false,
-      },
-    },
+    // deckId: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   references: {
+    //     model: 'deck',
+    //     key: 'id',
+    //     unique: false,
+    //   },
+    // },
     // altDeck_id: {
     //   type: DataTypes.INTEGER,
     //   allowNull: false,
