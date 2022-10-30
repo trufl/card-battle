@@ -13,21 +13,13 @@ Deck.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    userId: {
-      type: DataTypes.STRING,
+    user_id: {
+      type: DataTypes.INTEGER,
       references: {
         model:'user',
         key: 'id',
-      }
-
+        },
       },
-    // card_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model:'card',
-    //     key: 'id',
-    //   }
-    // },
 },
   {
     sequelize,

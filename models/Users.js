@@ -37,27 +37,7 @@ User.init(
         len: [8],
       },
     },
-    // deckId: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   references: {
-    //     model: 'deck',
-    //     key: 'id',
-    //     unique: false,
-    //   },
-    // },
-    // altDeck_id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   references: {
-    //     model: 'deck',
-    //     key: 'id',
-    //     unique: false,
-    //   }
-    // }
 
-    
-    
   },
   {
     hooks: {
@@ -65,12 +45,12 @@ User.init(
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
-      beforeUpdate: async (updatedUserData) => {
-        if (updatedUserData.password) {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-        }
-        return updatedUserData;
-      },
+      // beforeUpdate: async (updatedUserData) => {
+      //   if (updatedUserData.password) {
+      //   updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+      //   }
+      //   return updatedUserData;
+      // },
     },
     sequelize,
     timestamps: false,
