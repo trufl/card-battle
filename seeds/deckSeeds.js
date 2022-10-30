@@ -2,7 +2,7 @@ const { Deck, Card } = require("../models");
 
 const deckData = [
   {
-    // userId: null,
+    // userId: 1,
     cardOne: 3,
     cardTwo: 6,
     cardThree: 2,
@@ -10,7 +10,7 @@ const deckData = [
     cardFive: 1,
   },
   {
-    // userId: null,
+    // userId: 2,
     cardOne: 8,
     cardTwo: 4,
     cardThree: 9,
