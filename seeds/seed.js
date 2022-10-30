@@ -14,6 +14,7 @@ const seedDatabase = async () => {
 
     await seedCards();
 
+
     process.exit(0);
 };
 

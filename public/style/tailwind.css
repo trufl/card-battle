@@ -510,6 +510,29 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.m-0 {
+  margin: 0px;
+}
+
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
+.mx-0 {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
 .mb-5 {
   margin-bottom: 1.25rem;
 }
@@ -522,8 +545,48 @@ video {
   display: table;
 }
 
+.h-\[80vh\] {
+  height: 80vh;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.h-2\/4 {
+  height: 50%;
+}
+
 .h-6 {
   height: 1.5rem;
+}
+
+.w-\[80vw\] {
+  width: 80vw;
+}
+
+.w-40 {
+  width: 10rem;
+}
+
+.w-36 {
+  width: 9rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-4\/5 {
+  width: 80%;
+}
+
+.w-1\/5 {
+  width: 20%;
+}
+
+.w-2\/4 {
+  width: 50%;
 }
 
 .w-6 {
@@ -534,13 +597,37 @@ video {
   flex-direction: row;
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
 }
 
 .bg-orange-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(194 65 12 / var(--tw-bg-opacity));
+}
+
+.bg-\[url\(\'\/images\/cardBattle\/full-screen-map\.png\'\)\] {
+  background-image: url('/images/cardBattle/full-screen-map.png');
+}
+
+.bg-contain {
+  background-size: contain;
+}
+
+.bg-no-repeat {
+  background-repeat: no-repeat;
 }
 
 .font-extrabold {
@@ -585,3 +672,35 @@ video {
     max-width: 1536px;
   }
 }
+
+.btn-game {
+  border-radius: 0.5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.btn-game:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+}
+
+.btn-game:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  --tw-ring-color: rgb(96 165 250 / var(--tw-ring-opacity));
+  --tw-ring-opacity: 0.75;
+}
+
