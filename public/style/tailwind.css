@@ -545,6 +545,10 @@ video {
   display: table;
 }
 
+.contents {
+  display: contents;
+}
+
 .h-\[80vh\] {
   height: 80vh;
 }
@@ -607,10 +611,6 @@ video {
 
 .justify-between {
   justify-content: space-between;
-}
-
-.justify-around {
-  justify-content: space-around;
 }
 
 .bg-orange-700 {

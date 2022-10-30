@@ -13,10 +13,9 @@ Scores.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    User_id: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      // foreignKey: 'user_id',
       references: {
         model: 'user',
         key: 'id',
