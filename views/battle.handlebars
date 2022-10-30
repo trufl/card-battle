@@ -12,13 +12,8 @@
         <section aria-details="upper section" class="flex-row w-full h-2/4">
             <section aria-details="card section" class="flex h-2/4">
                 {{#each cards}}
-                <img data-defense="{{defense}}" data-strength="{{strength}}" src="{{src}}">
+                <img data-defense="{{defenseStat}}" data-strength="{{attackStat}}" src="/images/cardBattle/{{filename}}">
                 {{/each}}
-                <img data-defense="" data-strength="" src="/images/cardBattle/card-1-done.gif" class="my-2 mx-5">
-                <img data-defense="" data-strength="" src="/images/cardBattle/card-2-done.gif" class="my-2 mx-5">
-                <img data-defense="" data-strength="" src="/images/cardBattle/card-3-done.gif" class="my-2 mx-5">
-                <img data-defense="" data-strength="" src="/images/cardBattle/card-4-done.gif" class="my-2 mx-5">
-                <img data-defense="" data-strength="" src="/images/cardBattle/card-5-done.gif" class="my-2 mx-5">
             </section>
             <section aria-details="below cards" class="flex h-2/4 w-full justify-center" >
                 <img data-defense="" data-strength="" src="/images/cardBattle/card-5-done.gif" class="my-2">
@@ -33,13 +28,8 @@
                 </section>
                 <section id="playerCards" class="flex h-2/4 w-full">
                     {{#each playerDeck}}
-                    <img data-defense="{{defense}}" data-strength="{{strength}}" src="{{src}}">
+                    <img data-defense="{{defenseStat}}" data-strength="{{strengthStat}}" src="/images/cardBattle/{{filename}}">
                     {{/each}}
-                    <img data-defense="" data-strength="" src="/images/cardBattle/card-1-done.gif" class="my-2 mx-5">
-                    <img data-defense="" data-strength="" src="/images/cardBattle/card-2-done.gif" class="my-2 mx-5">
-                    <img data-defense="" data-strength="" src="/images/cardBattle/card-3-done.gif" class="my-2 mx-5">
-                    <img data-defense="" data-strength="" src="/images/cardBattle/card-4-done.gif" class="my-2 mx-5">
-                    <img data-defense="" data-strength="" src="/images/cardBattle/card-5-done.gif" class="my-2 mx-5">
                 </section>
             </section>
             <section class="h-full w-1/5 flex-col mt-1 ">

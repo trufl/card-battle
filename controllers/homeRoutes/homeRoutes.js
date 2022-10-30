@@ -22,15 +22,31 @@ router.get('/customize', async (req, res) =>{
 
 router.get('/battle', async (req, res) =>{
     try{
+        let playerDeck;
         let cards = await Card.findAll({raw: true});
-        
+        console.log(cards)
         for(i=0;i<5;i++){
             const random = Math.floor(Math.random() * 5)+1;
             cards.splice(random - 1, 1);
         };
         //TODO: Get the players cards.
+        if(req.session.logged_in){
+            let playerDeck = await Deck.findAll({
+                where: {user_id: req.session.user_id},
+                include: Card
+            })
+        }else{
+            playerDeck = await Card.findAll({raw: true});
+            for(i=0;i<5;i++){
+                const random = Math.floor(Math.random() * 5)+1;
+                playerDeck.splice(random - 1, 1);
+            };
+        };
+
+        console.log(playerDeck);
         res.render('battle', {
-            cards
+            cards,
+            playerDeck
         })
     }catch(err){
         res.status(500).json(err)
@@ -49,6 +65,7 @@ router.get('/highscores', async (req, res) =>{
             return res.status(404).render('highscores', highScores.message);
         }
         const plainScores = highScores.map((data) => data.get({plain: true}));
+        console.log(plainScores)
         res.status(200).render('highscores', { plainScores })
     }catch(err){
         res.status(500).json(err);
