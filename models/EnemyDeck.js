@@ -13,10 +13,6 @@ EnemyDeck.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    user_id: {
-      type: DataTypes.STRING,
-      
-      },
     card_1_id:{
       type: DataTypes.INTEGER,
       references: {
@@ -79,7 +75,7 @@ EnemyDeck.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "card",
+    modelName: "enemydeck",
   },
 );
 
