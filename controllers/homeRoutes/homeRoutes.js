@@ -26,20 +26,20 @@ router.get('/battle', async (req, res) =>{
         let cards = await Card.findAll({raw: true});
         console.log(cards)
         for(i=0;i<5;i++){
-            const random = Math.floor(Math.random() * 5)+1;
-            cards.splice(random - 1, 1);
+            const random = Math.floor(Math.random() * 10);
+            cards.splice(random-i, 1);
         };
         //TODO: Get the players cards.
         if(req.session.logged_in){
-            let playerDeck = await Deck.findAll({
+            playerDeck = await Deck.findOne({
                 where: {user_id: req.session.user_id},
                 include: Card
             })
         }else{
             playerDeck = await Card.findAll({raw: true});
-            for(i=0;i<5;i++){
-                const random = Math.floor(Math.random() * 5)+1;
-                playerDeck.splice(random - 1, 1);
+            for(j=0;j<5;j++){
+                const random = Math.floor(Math.random() * 10);
+                playerDeck.splice(random-j, 1);
             };
         };
 

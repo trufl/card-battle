@@ -16,7 +16,7 @@
                 {{/each}}
             </section>
             <section aria-details="below cards" class="flex h-2/4 w-full justify-center" >
-                <img data-defense="" data-strength="" src="/images/cardBattle/card-5-done.gif" class="my-2">
+                <img id="playedEnemyCard" data-defense="" data-strength="" src="/images/cardBattle/card-5-done.gif" class="my-2">
             </section>
         </section>
 
@@ -24,12 +24,18 @@
 
             <section class="flex-col w-4/5 h-full">
                 <section id="playerSelectedCard" class="flex h-2/4 w-full justify-center">
-                    <img data-defense="" data-strength="" src="/images/cardBattle/card-3-done.gif" class="my-2">
+                    <img id="playedPlayerCard" data-defense="" data-strength="" src="/images/cardBattle/card-3-done.gif" class="my-2">
                 </section>
                 <section id="playerCards" class="flex h-2/4 w-full">
+                    {{#if logged_in}}
                     {{#each playerDeck}}
                     <img data-defense="{{defenseStat}}" data-strength="{{strengthStat}}" src="/images/cardBattle/{{filename}}">
                     {{/each}}
+                    {{else}}
+                    {{#each playerDeck}}
+                    <img data-defense="{{defenseStat}}" data-strength="{{strengthStat}}" src="/images/cardBattle/{{filename}}">
+                    {{/each}}
+                    {{/if}}
                 </section>
             </section>
             <section class="h-full w-1/5 flex-col mt-1 ">
