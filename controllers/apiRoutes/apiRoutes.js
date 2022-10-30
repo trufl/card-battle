@@ -68,7 +68,7 @@ router.post('/signup', async (req, res) => {
 
 router.post('/newdeck', async (req,res) =>{
     try{//in the req.body must supply and object with cards having an array of objects with cardId key and value of the cards id that they want to add to their new deck
-        const newDeck = await Deck.create(1);
+        const newDeck = await Deck.create({user_id:req.session.user_id});
         for(i=0; i< 5; i++){
             const card = await Card.findOne({where: {id: req.body.cards[i].cardId}})
             await newDeck.addCard(card, {through: {selfGranted: false}});
