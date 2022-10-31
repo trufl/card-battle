@@ -6,10 +6,6 @@ const $skipButton = document.getElementById('skipButton');
 let gameStats;
 
 const init = async () => {
-    //when we render the game page set data-newGame attribute in one of
-    //the html elements to true if it is a new game and false if previous game exists.
-    //In the back end we can set a session variable called newGame and set it to false when new game is
-    //started and then false when the game is finished
     const isNewGame = document.querySelector('#title').getAttribute('data-newGame');
 
     if(isNewGame) {
@@ -192,8 +188,7 @@ const renderPlayedCard = (e) => {
     const clickedCard = e.target.getAttribute('src');
     const clickedCardAttack = e.target.getAttribute('data-attack');
     const clickedCardDefense = e.target.getAttribute('data-defense');
-    const playSection = document.getElementById('playedCardSection');
-    const playedCard = document.getElementById('played-card');
+    const playedCard = document.getElementById('playedPlayerCard');
 
     playedCard.classList.remove('hide-card');
     
@@ -201,7 +196,7 @@ const renderPlayedCard = (e) => {
     playedCard.setAttribute('data-attack', clickedCardAttack);
     playedCard.setAttribute('data-defense', clickedCardDefense);
     
-    playSection.appendChild(playedCard);
+    
     document.getElementById('buttonSection').style.display = 'block';
 
     $attackButton.addEventListener('click', attackCb);
