@@ -22,16 +22,6 @@ Gamestate.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    //will be foreign key for user deck id
-    playerDeckId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'deck',
-        key: 'id',
-      }
-    },
-    // foreign key for enemy id
     enemyId: {
       type: DataTypes.INTEGER,
       allowNull: false,
