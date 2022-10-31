@@ -72,6 +72,14 @@ router.get('/cardstore', (req, res) =>{
 
 });
 
+router.get('/victory', (req, res) => {
+    res.status(200).render('youwon');
+});
+
+router.get('/youlost', (req, res) => {
+    res.status(200).render('youdied');
+});
+
 router.get('/highscores', async (req, res) =>{
     try{
         const highScores = await Scores.findAll({include: User});
