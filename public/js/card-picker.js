@@ -3,18 +3,14 @@ const pickedCards = [];
 const submitBtn = document.getElementById('submit-btn');
 
 const pickUsersCard = () => {
-    const cardArea = document.querySelector('#card-img-area');
+    const cards = document.querySelectorAll('.card-img');
 
-    cardArea.addEventListener('click', clickHandler);
+    cards.forEach(card => card.addEventListener('click', clickHandler));
 } 
 
 const clickHandler = (event) => {
     //checks to make sure seven cards havent been selected
-    if(pickedCards.length < 7) {
-
-        //if clicked item is an image then proceed
-        if(event.target === Image) {
-
+    if(pickedCards.length < 5) {
             //get card id from img attribute
             const cardId = event.target.getAttribute('data-id');
 
@@ -28,14 +24,13 @@ const clickHandler = (event) => {
                  //add event listener to img so that a double click can unselect card
                 event.target.addEventListener('dblclick', dblHandler);
 
-                if(pickedCards.length === 7) {
+                if(pickedCards.length === 5) {
 
                     // if seven cards have been selected then show submit button and add event listener to send data to server
                     submitBtn.classList.add('show-button');
                     submitBtn.addEventListener('click', submitHandler);
                 }
             }
-        }
     }
 }
 
@@ -60,7 +55,7 @@ const dblHandler = (event) => {
         //removes custom background to let user know card was unselected
         event.target.classList.remove("custom-bgrnd-selected");
 
-        if(pickedCards.length < 7) {
+        if(pickedCards.length < 5) {
             //makes sure card was removed
             //then remove event listener from submit button
             submitBtn.removeEventListener('click', submitHandler);
@@ -72,20 +67,18 @@ const dblHandler = (event) => {
 }
 
 const submitHandler = () => {
-    if(pickedCards.length === 7) {
-        const [card_1_id, card_2_id, card_3_id, card_4_id, card_5_id, card_6_id, card_7_id] = pickedCards;
+    if(pickedCards.length === 5) {
+        const [card_1_id, card_2_id, card_3_id, card_4_id, card_5_id] = pickedCards;
 
-        fetch('api/card-pick', {
+        fetch('api/newdeck', {
             method: 'POST',
-            headers: ["content-type", "application-json"],
+            headers: { 'Content-Type': 'application/json' },
             body: {
                 card_1_id,
                 card_2_id,
                 card_3_id,
                 card_4_id,
-                card_5_id,
-                card_6_id,
-                card_7_id,
+                card_5_id
             }
         })
         ,then((res) => {
