@@ -6,9 +6,10 @@ function goNext() {
     slider.style.transform = "translateX(" + defaultTransform + "px)";
 }
 next.addEventListener("click", goNext);
+
 function goPrev() {
     var slider = document.getElementById("slider");
-    if (Math.abs(defaultTransform) === 0) defaultTransform = 0;
+    if (Math.abs(defaultTransform) === 0) defaultTransform = 398;
     else defaultTransform = defaultTransform + 500;
     slider.style.transform = "translateX(" + defaultTransform + "px)";
 }

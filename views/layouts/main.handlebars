@@ -18,18 +18,21 @@
         <h1 class="text-white text-6xl font-press-start p-10">
             Card Battle
         </h1>
-        <a href="javascript-menu">
-        <nav class="text-white h-20 w-20 flex flex-row justify-between content-center">
-            <svg xmlns=" http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-40 h-40">
-                <path stroke-linecap="square" stroke-linejoin="square" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-        </nav>
-        </a>
+
+
+                <svg class="text-white h-20 w-20 flex flex-row justify-between content-center" xmlns=" http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-40 h-40">
+                    <path stroke-linecap="square" stroke-linejoin="square"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            
+
+ 
+
         <!-- Only display the logout button if the user is logged in -->
         {{#if logged_in}}
         <nav>
-            <button class="btn" id="logout">Logout</button>
+            <button class="btn-game" id="logout">Logout</button>
         </nav>
         {{/if}}
     </header>
@@ -37,7 +40,8 @@
         {{{ body }}}
 
     </main>
-    <footer class="border-4 h-28 w-full absolute inset-x-0 bottom-0 border-black flex flex-row justify-start content-center bg-orange-600">
+    <footer
+        class="border-4 h-28 w-full absolute inset-x-0 bottom-0 border-black flex flex-row justify-start content-center bg-orange-600">
         <a href="https://github.com/trufl/card-battle" target="_blank">
             <button class="btn-game m-8">
                 Github Repository
@@ -50,6 +54,8 @@
     <script src=" /js/logout.js">
     </script>
     {{/if}}
+
+    
 </body>
 
 </html>
