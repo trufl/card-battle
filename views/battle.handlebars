@@ -12,16 +12,11 @@
         <section aria-details="upper section" class="flex-row w-full h-2/4">
             <section aria-details="card section" class="flex h-2/4">
                 {{#each cards}}
-                <img data-defense="{{defense}}" data-strength="{{strength}}" src="{{src}}">
+                <img data-defense="{{defenseStat}}" data-strength="{{attackStat}}" src="/images/cardBattle/{{filename}}">
                 {{/each}}
-                <img data-defense="" data-strength="" src="/images/cardBattle/card-1-done.gif" class="my-2 mx-5">
-                <img data-defense="" data-strength="" src="/images/cardBattle/card-2-done.gif" class="my-2 mx-5">
-                <img data-defense="" data-strength="" src="/images/cardBattle/card-3-done.gif" class="my-2 mx-5">
-                <img data-defense="" data-strength="" src="/images/cardBattle/card-4-done.gif" class="my-2 mx-5">
-                <img data-defense="" data-strength="" src="/images/cardBattle/card-5-done.gif" class="my-2 mx-5">
             </section>
             <section aria-details="below cards" class="flex h-2/4 w-full justify-center" >
-                <img data-defense="" data-strength="" src="/images/cardBattle/card-5-done.gif" class="my-2">
+                <img id="playedEnemyCard" data-defense="" data-strength="" src="" class="my-2">
             </section>
         </section>
 
@@ -29,17 +24,18 @@
 
             <section class="flex-col w-4/5 h-full">
                 <section id="playerSelectedCard" class="flex h-2/4 w-full justify-center">
-                    <img data-defense="" data-strength="" src="/images/cardBattle/card-3-done.gif" class="my-2">
+                    <img id="playedPlayerCard" data-defense="" data-strength="" src="" class="my-2">
                 </section>
                 <section id="playerCards" class="flex h-2/4 w-full">
+                    {{#if logged_in}}
                     {{#each playerDeck}}
-                    <img data-defense="{{defense}}" data-strength="{{strength}}" src="{{src}}">
+                    <img data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}" src="/images/cardBattle/{{'cards.filename'}}">
                     {{/each}}
-                    <img data-defense="" data-strength="" src="/images/cardBattle/card-1-done.gif" class="my-2 mx-5">
-                    <img data-defense="" data-strength="" src="/images/cardBattle/card-2-done.gif" class="my-2 mx-5">
-                    <img data-defense="" data-strength="" src="/images/cardBattle/card-3-done.gif" class="my-2 mx-5">
-                    <img data-defense="" data-strength="" src="/images/cardBattle/card-4-done.gif" class="my-2 mx-5">
-                    <img data-defense="" data-strength="" src="/images/cardBattle/card-5-done.gif" class="my-2 mx-5">
+                    {{else}}
+                    {{#each playerDeck}}
+                    <img data-defense="{{defenseStat}}" data-strength="{{attackStat}}" src="/images/cardBattle/{{filename}}">
+                    {{/each}}
+                    {{/if}}
                 </section>
             </section>
             <section class="h-full w-1/5 flex-col mt-1 ">

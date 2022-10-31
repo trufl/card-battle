@@ -8,23 +8,18 @@ const signUpFormHandler = async (event) => {
     const confirmPassword = document.querySelector('#confirm-password').value.trim()
     
     if (username && email && password) {
-        const response = await fetch('/api/users', {
+        const response = await fetch('/api/signup', {
             method: 'POST',
             body: JSON.stringify({ username, email, password }),
             headers: { 'Content-Type': 'application/json' }
         });
         // confirm password option?
-        if(password == confirmPassword) {
-            (response.ok) 
-                document.location.replace('/');
-            } 
+        if(response.ok) {
+            document.location.replace('/');
         } else {
-            alert('Passowrds do not match');
-            
-        }
-    
+            alert('Passwords do not match');
+        };
+    };
 };
 
-document
-    .querySelector('.signup-form')
-    .addEventListener('submit', signUpFormHandler)
+document.querySelector('.signup-form').addEventListener('submit', signUpFormHandler);
