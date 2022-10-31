@@ -17,14 +17,7 @@ Enemy.init(
         type: DataTypes.STRING,
         allowNull: false,
     },
-    deckId: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'enemydeck',
-            key: 'id',
-        }
-    }
-},
+  },
   {
     sequelize,
     timestamps: false,
