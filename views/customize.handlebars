@@ -1,57 +1,71 @@
-<!-- not compltete -->
+<section class="min-h-screen w-screen bg-indigo-700 relative pb-28 pt-32">
+  <section class="p-10 border-4 border-black bg-orange-600 h-fit">
+    <h3 class="text-center text-white font-press-start font-extrabold text-3xl pt-4"> Select cards</h3>
 
-{{!-- <section class="container"> --}}
-<h3 class="card-selection"> Choose Your Hand</h3>
-<!-- need alt cards -->
-{{!-- {{#each card}}
-<div class="row align-center mb-5">
-    <div class="col-md-6">
-    <!-- display card as selectable option -->
-    {{card.image}}
 
-    </div>
+    <div class="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4 ">
 
-</div>
-{{/each}}
-</section> --}}
+      <div class="w-full relative flex items-center justify-center">
+        <button aria-label="slide backward"
+          class="absolute z-30 left-0 ml-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer"
+          id="prev">
+          <svg class="dark:text-gray-900" width="16" height="22" viewBox="0 0 8 14" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="w-4/5 h-full mx-auto overflow-x-hidden overflow-y-hidden" data-carousel="slide">
+          <div id="slider"
+            class="h-full w-full flex gap-8 items-center justify-start transition-all ease-out duration-1000 ">
+            {{#each cards}}
+            <div class="flex flex-shrink-0 relative w-60 min-width-full sm:w-auto h-72">
+              <!-- need to set defense and strength to card id-->
+              <img id="card-img-area" class="card-selector" card_id="{{cardId}}" src="/images/cardBattle/{{filename}}">
 
-<!-- display users current cards -->
-<section id="current-cards" class="contaimer">
-<div class="row align-center mb-5">
-    <div class="col-md-6">
-        
-    {{#each cards as |card|}}
-  <img src="/images/{{card.[0].filename}}" alt="{{card.description}}">
-        
-    </div>
-</div>
-{{/each}}
+            </div>
+            {{/each}}
+          </div>
+
+        </div>
+        <button aria-label="slide forward"
+          class="absolute z-30 right-0 mr-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-black"
+          id="next">
+          <svg class="dark:text-gray-900" width="16" height="22" viewBox="0 0 8 14" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+  </section>
+  </div>
+  </div>
+</section>
 </section>
 
+{{!-- <section>
+  <div class="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4 ">
 
-<!-- not compltete -->
-
-{{!-- <section class="container">
-<h3 class="card-selection"> Choose Your Hand</h3>
-<!-- need alt cards -->
-{{#each card}}
-<div class="row align-center mb-5">
-    <div class="col-md-6">
-    <!-- display card as selectable option -->
-    {{{card.image}}}
-
+    <h2 class="text-center font-press-start font-extrabold text-3xl pt-4"> Current Deck</h2>
+    {{#if logged_in}}
+    {{#each userDecks}}
+    <div class="flex flex-shrink-0 relative w-60 min-width-full sm:w-auto h-72">
+      <!-- need to set defense and strength to card id-->
+      <img id="card-img-area" card_id="{{cardId}}" src="/images/cardBattle/{{filename}}">
     </div>
-
-</div>
-{{/each}}
-</section>
-
-<!-- display users current cards -->
-<section id="current-cards" class="contaimer">
-    {{#each user.card}}
-<div class="row align-center mb-5">
-    <div class="col-md-6">
-        {{{card.image}}}
+    {{/each}}
+    {{else}}
+    {{#each userDecks}}
+    <div class="flex flex-shrink-0 relative w-60 min-width-full sm:w-auto h-72">
+      <!-- need to set defense and strength to card id-->
+      <img id="card-img-area" card_id="{{cardId}}" src="/images/cardBattle/{{filename}}">
     </div>
-</div>
+    {{/each}}
+    {{/if}}
+  </div>
 </section> --}}
+
+
+<script src="/js/customize.js"> </script>
+<script src="/js/card-picker.js"></script>
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
