@@ -13,9 +13,8 @@ Card.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    card_name: {
+    cardName: {
       type: DataTypes.STRING,
-      
       },
 
     attackStat: {
@@ -33,7 +32,7 @@ Card.init(
             isNumeric: true,
         },
     }, 
-    image: {
+    filename: {
         type: DataTypes.STRING,
         allowNull: false,
     }

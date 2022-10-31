@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Deck, Card } = require('../../models');
 
 router.post('/login', async (req, res) => {
     try {
@@ -46,5 +46,37 @@ router.post('/logout', (req, res) => {
         res.status(404).end();
     }
 });
+
+router.post('/signup', async (req, res) => {
+    try{
+        const userData = await User.create({
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password,
+        });
+        
+        req.session.save(() => {
+            req.session.logged_in = true;
+            req.session.user_id = userData.id;
+            res.status(200).json(userData);
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+router.post('/newdeck', async (req,res) =>{
+    try{//in the req.body must supply and object with cards having an array of objects with cardId key and value of the cards id that they want to add to their new deck
+        const newDeck = await Deck.create({user_id:req.session.user_id});
+        for(i=0; i< 5; i++){
+            const card = await Card.findOne({where: {id: req.body.cards[i].cardId}})
+            await newDeck.addCard(card, {through: {selfGranted: false}});
+        };
+        res.status(200).json("Created new deck with cards supplied");
+    }catch(err){
+        res.status(500).json(err);
+    };
+})
 
 module.exports = router;

@@ -1,0 +1,22 @@
+[
+    {
+        "enemy_id": 1,
+        "card_1_id": 1,
+        "card_2_id": 4,
+        "card_3_id": 9,
+        "card_4_id": 8,
+        "card_5_id": 2,
+        "card_6_id": 5,
+        "card_7_id": 10
+    },
+    {
+        "enemy_id": 2,
+        "card_1_id": 4,
+        "card_2_id": 8,
+        "card_3_id": 3,
+        "card_4_id": 6,
+        "card_5_id": 7,
+        "card_6_id": 5,
+        "card_7_id": 2
+    }
+]

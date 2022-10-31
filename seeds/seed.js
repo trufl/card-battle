@@ -1,18 +1,16 @@
-const sequelize = require('../config/connection');
-const { User } = require('../models');
-const seedCards = require('./cardseeds');
-
-const userData = require('./userData.json');
+const sequelize = require('../config/connection.js');
+const seedDecks = require('./deckSeeds');
+const seedScores = require('./scoresSeed');
+const seedUsers = require('./userSeeds');
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
+    
+    await seedUsers();
+    await seedDecks();
+    await seedScores();
 
-    await User.bulkCreate(userData, {
-        individualHooks: true,
-        returning: true,
-    });
 
-    await seedCards();
 
     process.exit(0);
 };

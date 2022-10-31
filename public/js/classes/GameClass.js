@@ -1,8 +1,8 @@
 class GameStats {
-    constructor(player, ai, turn = true){
+    constructor(player, ai){
         this.player = player;
         this.ai = ai;
-        this.turn = turn;
+        this.turn = true;
     }
 
     getTurn() {
@@ -14,3 +14,4 @@ class GameStats {
     }
 };
 
+module.exports = GameStats;

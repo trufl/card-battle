@@ -13,9 +13,14 @@ Scores.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    User_id: {
+    user_id: {
       type: DataTypes.INTEGER,
-      allowNull:false
+      allowNull: false,
+      references: {
+        model: 'user',
+        key: 'id',
+        unique: false
+      },
       
       },
 
@@ -27,18 +32,13 @@ Scores.init(
       },
     },
 
-    date: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        
-    },
 },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: "scores",
+    modelName: "score",
   },
 );
 

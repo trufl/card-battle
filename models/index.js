@@ -1,37 +1,32 @@
-// import models
 const Scores = require("./Scores")
 const Deck = require("./Deck")
 const User = require("./Users")
-const Card = require("./Cards")
+const Card = require("./cards")
+const Deck_Card = require('./deckCard')
 const sequelize = require("../config/connection");
 
 
 User.hasMany(Scores, {
-    foreignKey: "scores_id"
-})
-
-User.hasMany(Card, {
-  foreignKey: "card_id",
+    foreignKey: "user_id"
+});
+Scores.belongsTo(User, {
+    foreignKey: "user_id"
 });
 
-User.hasMany(Deck,{
-    foreignKey: "deck_id",
-})
-
-Card.belongsToMany(User, {
-    through: Deck
-
+User.hasMany(Deck, {
+    foreignKey: "user_id"
+});
+Deck.belongsTo(User, {
+    foreignKey: "user_id"
 });
 
-Deck.belongsToMany(User, {
-    through: Card
-
+Deck.belongsToMany(Card,{
+    through: Deck_Card
 });
 
 Card.belongsToMany(Deck, {
-    through: User
-
-});
+    through: Deck_Card
+})
 
 module.exports = {
 Card,
