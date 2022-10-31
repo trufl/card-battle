@@ -49,42 +49,14 @@ class Player {
 
 class Enemy extends Player {
 
-    constructor(enemyId, deckId, cards) {
-        this.cards = cards;
+    constructor(enemyId) {
         this.enemyId = enemyId;
-        //Should eventualy hold last used card id
-        this.lastCard = 0;
 
         super(deckId);
     }
 
     pickCard() {
-        getCard(Math.floor(Math.random() * 6) + 1);
-    }
-
-    getCard(cardNum) {
-        //depending on how the card data for the ai comes in
-        //cardNum should be use to get the card from the object or array
-        //and return the card object
-        if(cardNum === this.getLastCard()) {
-            this.pickCard();
-        } else {
-            //look through cards and find the card by id using cardNum
-
-            //before returning set lastCard to the id of the card being used
-        }
-    }
-
-    setLastCard(lastCardId) {
-        this.lastCard = lastCardId;
-    }
-
-    getLastCard() {
-        return this.lastCard;
-    }
-
-    getEnemyId() {
-        return this.enemyId;
+        return Math.floor(Math.random() * 5) + 1;
     }
 }
 

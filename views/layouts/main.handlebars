@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Press+Start+2P&display=swap"
         rel="stylesheet">
+    <script src="../path/to/flowbite/dist/flowbite.js"></script>
     <title>User Registry</title>
 </head>
 
@@ -17,14 +18,46 @@
         <h1 class="text-white text-6xl font-press-start p-10">
             Card Battle
         </h1>
-        <a href="javascript-menu">
-        <nav class="text-white h-20 w-20 flex flex-row justify-between content-center">
-            <svg xmlns=" http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-40 h-40">
-                <path stroke-linecap="square" stroke-linejoin="square" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+
+        <button id="dropdownDefault" data-dropdown-toggle="dropdown"
+            class="text-white hover:bg-indigo-700 hover:border-4 hover:border-black focus:ring-4 focus:outline-none focus:ring-black font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            type="button">
+            <nav class="text-white h-20 w-20 flex flex-row justify-between content-center">
+                <svg xmlns=" http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-40 h-40">
+                    <path stroke-linecap="square" stroke-linejoin="square"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </nav><svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
-        </nav>
-        </a>
+        </button>
+        <!-- Dropdown menu -->
+        <div id="dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+            data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="bottom"
+            style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 77px);">
+            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
+                <li>
+                    <a href="#"
+                        class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
+                        out</a>
+                </li>
+            </ul>
+        </div>
+
         <!-- Only display the logout button if the user is logged in -->
         {{#if logged_in}}
         <nav>
@@ -36,7 +69,8 @@
         {{{ body }}}
 
     </main>
-    <footer class="border-4 h-28 w-full absolute inset-x-0 bottom-0 border-black flex flex-row justify-start content-center bg-orange-600">
+    <footer
+        class="border-4 h-28 w-full absolute inset-x-0 bottom-0 border-black flex flex-row justify-start content-center bg-orange-600">
         <a href="https://github.com/trufl/card-battle" target="_blank">
             <button class="btn-game m-8">
                 Github Repository
