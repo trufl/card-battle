@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Deck, Card } = require('../../models');
+const { User, Deck, Card, Gamestate } = require('../../models');
 
 router.post('/login', async (req, res) => {
     try {
@@ -78,5 +78,22 @@ router.post('/newdeck', async (req,res) =>{
         res.status(500).json(err);
     };
 });
+
+router.post('/savegame', (req, res) =>{
+    Gamestate.create({
+        playerId: ,
+        playerHealth: ,
+        enemyId: ,
+        enemyHealth:
+    });
+});
+
+router.put('/savegame', (req,res) => {
+    Gamestate.update({
+        
+    },{
+        where:{id: req.session.gameStateId}
+    });
+})
 
 module.exports = router;
