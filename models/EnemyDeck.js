@@ -13,62 +13,13 @@ EnemyDeck.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    card_1_id:{
+    enemy_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'card',
-        key: 'id',
+        model: 'enemy',
+        key: 'id'
       }
-
-    },
-    card_2_id:{
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'card',
-        key: 'id',
-      }
-
-    },
-    card_3_id:{
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'card',
-        key: 'id',
-      }
-
-    },
-    card_4_id:{
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'card',
-        key: 'id',
-      }
-
-    },
-    card_5_id:{
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'card',
-        key: 'id',
-      }
-
-    },
-    card_6_id:{
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'card',
-        key: 'id',
-      }
-
-    },
-    card_7_id:{
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'card',
-        key: 'id',
-      }
-
-    },
+    }
 },
   {
     sequelize,

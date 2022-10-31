@@ -1,4 +1,4 @@
-const { Deck, Card } = require("../models");
+const { Deck, Card, EnemyDeck } = require("../models");
 
 const deckData = [
   {
@@ -8,6 +8,8 @@ const deckData = [
     user_id: 2
   }
 ];
+
+const enemyDeckData = [{enemy_id: 1}, {enemy_id: 2}];
 
 const cardData = [
   {
@@ -99,6 +101,19 @@ const seedDecks = async () => {
   await deck1.addCard(card8, {through: {selfGranted: false}});
   await deck1.addCard(card9, {through: {selfGranted: false}});
   
+  const enemyDeck = await EnemyDeck.create(enemyDeckData[0]);
+  const enemyDeck1 = await EnemyDeck.create(enemyDeckData[1]);
+
+  await enemyDeck.addCard(card, {through: {selfGranted: false}});
+  await enemyDeck.addCard(card1, {through: {selfGranted: false}});
+  await enemyDeck.addCard(card2, {through: {selfGranted: false}});
+  await enemyDeck.addCard(card3, {through: {selfGranted: false}});
+  await enemyDeck.addCard(card4, {through: {selfGranted: false}});
+  await enemyDeck1.addCard(card5, {through: {selfGranted: false}});
+  await enemyDeck1.addCard(card6, {through: {selfGranted: false}});
+  await enemyDeck1.addCard(card7, {through: {selfGranted: false}});
+  await enemyDeck1.addCard(card8, {through: {selfGranted: false}});
+  await enemyDeck1.addCard(card9, {through: {selfGranted: false}});
 };
 
 module.exports = seedDecks;
