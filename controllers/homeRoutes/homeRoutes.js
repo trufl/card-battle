@@ -116,7 +116,7 @@ router.get('/userdeck', withAuth, async (req, res) => {
 })
 
 router.get('/', (req, res) =>{
-    res.status(200).render('home', {logged_in: req.session.logged_in});
+    res.status(200).render('home');
 });
 
 module.exports = router;
