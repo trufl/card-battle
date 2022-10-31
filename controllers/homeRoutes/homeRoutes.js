@@ -96,7 +96,7 @@ router.get('/highscores', async (req, res) =>{
 });
 
 router.get('/', (req, res) =>{
-    res.status(200).render('home');
+    res.status(200).render('home', {logged_in: req.session.logged_in});
 });
 
 module.exports = router;
