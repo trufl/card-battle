@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { User, Deck, Card } = require('../../models');
+const { User, Deck, Card, Gamestate } = require('../../models');
+
 
 router.post('/login', async (req, res) => {
     try {
@@ -83,9 +84,23 @@ router.post('/newdeck', async (req,res) =>{
         await newDeck.addCard(card5, {through: {selfGranted: false}});
 
         res.status(200).json("Created new deck with cards supplied");
-    }catch(err){
+    } catch(err) {
         res.status(500).json(err);
     };
+});
+
+router.get('/getgame', async (req, res) => {
+    try {
+        const gamestate = await Gamestate.findOne({ where: { user_id: req.session.user_id } })
+        
+        if(!gamestate) {
+            res.status(404).json('Game not found');
+        }
+
+        res.status(200).json(gamestate);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 module.exports = router;

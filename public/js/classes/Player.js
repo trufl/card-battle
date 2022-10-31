@@ -1,6 +1,5 @@
 class Player {
-    constructor(deckId) {
-        this.deckId = deckId;
+    constructor() {
         this.health = 1000;
         this.lastAttack = true;
     }
@@ -41,18 +40,12 @@ class Player {
             return false;
         }
     }
-
-    getDeckId() {
-        return this.deckId;
-    }
 }
 
 class Enemy extends Player {
 
     constructor(enemyId) {
         this.enemyId = enemyId;
-
-        super(deckId);
     }
 
     pickCard() {

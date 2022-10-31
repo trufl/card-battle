@@ -13,11 +13,10 @@ const init = async () => {
     const isNewGame = document.querySelector('#title').getAttribute('data-newGame');
 
     if(isNewGame) {
-        const deckId = document.querySelector('#player-img').getAttribute('data-deckId');
-        const player = new Player(deckId);
+        const player = new Player();
         const ai = enemyAssemble();
         gameStats = new GameStats(player, ai);
-        // saveStartGame();
+        saveStartGame();
         turnBased();
     } else {
         gameStats = await getPrevGame();
@@ -25,8 +24,71 @@ const init = async () => {
     }
 }
 
+const displayHealth = () => {
+    const playerHealthDisplay = document.querySelector('#player-health-area');
+    const aiHealthDisplay = document.querySelector('#enemy-health-area');
+    const playerHealth = parseInt(gameStats.player.checkHealth());
+    const aiHealth = parseInt(gameStats.ai.checkHealth());
+
+
+    playerHealthDisplay.textContent = playerHealth;
+    aiHealthDisplay.textContent = aiHealth;
+
+    if(playerHealth < 700) {
+        switch(playerHealth) {
+            case playerHealth > 350:
+                playerHealthDisplay.classList.remove('green-color');
+                playerHealthDisplay.classList.add('orange-color');
+                break;
+            case playerHealth <= 350:
+                playerHealthDisplay.classList.remove('orange-color');
+                playerHealthDisplay.classList.add('red-color');
+                break;
+            default:
+                break;
+        }
+    }
+
+    if(aiHealth < 700) {
+        switch(aiHealth) {
+            case aiHealth > 350:
+                aiHealthDisplay.classList.remove('green-color');
+                aiHealthDisplay.classList.add('orange-color');
+                break;
+            case aiHealth <= 350:
+                aiHealthDisplay.classList.add('orange-color');
+                aiHealthDisplay.classList.add('red-color');
+                break;
+            default:
+                break;
+        }
+    }
+}
+
 const getPrevGame = async () => {
-    
+
+    try{
+    const prevGame = await fetch('/api/getgame').then((res) => {
+        if(res.ok) {
+            res.json()
+            .then((data) => data)
+        }
+    });
+    const { player_id, player_health, enemy_id, enemy_health }  = prevGame;
+
+    const player = new Player();
+    const ai = new Enemy(enemy_id);
+
+    player.setHealth(player_health);
+    ai.setHealth(enemy_health);
+
+    const prevGameStats = new GameStats(player, ai)
+
+    return prevGameStats;
+
+    } catch(err) {
+        console.error(err);
+    }
 }
 
 const saveStartGame = async () => {
@@ -48,7 +110,7 @@ const saveStartGame = async () => {
 }
 
 const saveGame = async () => {
-    await fetch('/api/savegame', {
+    fetch('/api/savegame', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: {
@@ -65,7 +127,8 @@ const saveGame = async () => {
 }
 
 const turnBased = async() => {
-    // await saveGame();
+    displayHealth();
+
     const playerAlive = gameStats.player.isAlive();
     const aiAlive = gameStats.ai.isAlive();
 
@@ -75,9 +138,11 @@ const turnBased = async() => {
         if(turn) {
             gameStats.setTurn(false);
             getPlayerChoice();
+            await saveGame();
         } else {
             gameStats.setTurn(true);
             getAiChoice();
+            await saveGame();
         }
     } else if(playerAlive){
         playerVictory();
@@ -102,6 +167,7 @@ const attackCb = () => {
 
     document.getElementById('buttonSection').style.display = 'none';
 
+    // await saveGame();
     turnBased();
 }
 
@@ -112,6 +178,7 @@ const defendCb = () => {
 
     document.getElementById('buttonSection').style.display = 'none';
 
+    // await saveGame();
     turnBased();
 }
 
