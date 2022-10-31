@@ -3,6 +3,7 @@ const seedDecks = require('./deckSeeds');
 const seedScores = require('./scoresSeed');
 const seedUsers = require('./userSeeds');
 const seedEnemy = require('./seedEnemy');
+const seedGameState = require('./gameStateSeed');
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
@@ -11,6 +12,7 @@ const seedDatabase = async () => {
     await seedUsers();
     await seedDecks();
     await seedScores();
+    await seedGameState();
 
 
 
