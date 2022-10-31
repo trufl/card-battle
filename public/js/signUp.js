@@ -14,17 +14,12 @@ const signUpFormHandler = async (event) => {
             headers: { 'Content-Type': 'application/json' }
         });
         // confirm password option?
-        if(password == confirmPassword) {
-            (response.ok) 
-                document.location.replace('/');
-            } 
+        if(response.ok) {
+            document.location.replace('/');
         } else {
-            alert('Passowrds do not match');
-            
-        }
-    
+            alert('Passwords do not match');
+        };
+    };
 };
 
-document
-    .querySelector('.signup-form')
-    .addEventListener('submit', signUpFormHandler)
+document.querySelector('.signup-form').addEventListener('submit', signUpFormHandler);

@@ -15,7 +15,6 @@ Card.init(
     },
     cardName: {
       type: DataTypes.STRING,
-      
       },
 
     attackStat: {
