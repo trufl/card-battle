@@ -88,21 +88,45 @@ router.post('/newdeck', async (req,res) =>{
     };
 });
 
-router.post('/savegame', (req, res) =>{
-    Gamestate.create({
-        playerId: ,
-        playerHealth: ,
-        enemyId: ,
-        enemyHealth:
-    });
+router.post('/savegame', async (req, res) =>{
+    try{
+
+        const game = await Gamestate.create({
+            playerId: req.session.user_id,
+            playerHealth: req.body.player_health,
+            enemyId: req.body.enemy_id,
+            enemyHealth: req.body.enemy_health
+        });
+        req.session.save(() => {
+            req.session.gameStateId = game.id;
+            req.session.inGame = true;
+        });
+        if(!game){
+            return res.status(500).json("Failed to create gamestate");
+        }else{
+            res.status(200).json("Created new gamestate")
+        };
+    }catch(err){
+        res.status(500).json(err)
+    }
 });
 
-router.put('/savegame', (req,res) => {
-    Gamestate.update({
-        
-    },{
-        where:{id: req.session.gameStateId}
-    });
+router.put('/savegame', async (req,res) => {
+    try{
+        const game = await Gamestate.update({
+            playerHealth: req.body.player_health,
+            enemy_health: req.body.enemy_health
+        },{
+            where:{id: req.session.gameStateId}
+        });
+        if(game <= 0){
+            return res.status(500).json("Failed to update game");
+        }else{
+            res.status(200).json("Created new gamestate")
+        }
+    }catch(err){
+        res.status(500).json(err)
+    };
 })
 
 module.exports = router;
