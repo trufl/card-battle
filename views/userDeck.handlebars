@@ -1,0 +1,27 @@
+<section>
+     <div class="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4 ">
+    
+                    <h2 class="text-center font-press-start font-extrabold text-3xl pt-4"> Current Deck</h2>
+                    {{#if hasDecks}}
+                    {{#each userDecks}}
+      <div class="flex flex-shrink-0 relative w-60 min-width-full sm:w-auto h-72">
+<!-- need to set defense and strength to card id-->
+                 <img id="card-img-area"
+          card_id="{{cardId}}"
+          src="/images/cardBattle/{{filename}}">
+        </div>
+                    {{/each}}
+                    {{else}}
+                    {{#each userDecks}}
+      <div class="flex flex-shrink-0 relative w-60 min-width-full sm:w-auto h-72">
+<!-- need to set defense and strength to card id-->
+                    <img id="card-img-area"
+          card_id="{{cardId}}"
+          src="/images/cardBattle/{{filename}}">
+        </div>
+                    {{/each}}
+                    {{/if}}
+    </div>
+</section>
+
+        <script src="/js/card-picker.js"></script>
