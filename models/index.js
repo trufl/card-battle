@@ -1,5 +1,5 @@
 const Scores = require("./scores");
-const Deck = require("./Deck");
+const Deck = require("./deck");
 const User = require("./Users");
 const Card = require("./cards");
 const Enemy = require('./Enemy');
