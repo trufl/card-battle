@@ -53,22 +53,6 @@ EnemyDeck.init(
       }
 
     },
-    card_6_id:{
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'card',
-        key: 'id',
-      }
-
-    },
-    card_7_id:{
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'card',
-        key: 'id',
-      }
-
-    },
 },
   {
     sequelize,

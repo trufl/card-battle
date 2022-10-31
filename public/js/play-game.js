@@ -1,5 +1,5 @@
 const { Player, Enemy, GameStats} = require('./classes');
-const $playerCards = document.querySelectorAll('playerCards');
+// const $playerCards = document.querySelectorAll('playerCards');
 const $attackButton = document.getElementById('attackButton');
 const $defendButton = document.getElementById('defenseButton');
 const $skipButton = document.getElementById('skipButton');
@@ -15,8 +15,9 @@ const init = async () => {
     if(isNewGame) {
         const deckId = document.querySelector('#player-img').getAttribute('data-deckId');
         const player = new Player(deckId);
-        const ai = await enemyAssemble();
+        const ai = enemyAssemble();
         gameStats = new GameStats(player, ai);
+        // saveStartGame();
         turnBased();
     } else {
         gameStats = await getPrevGame();
@@ -24,38 +25,39 @@ const init = async () => {
     }
 }
 
-const getCards = async (deckId) => {
-    const cards = await fetch(`/api/game-play/enemy-cards/${deckId}`,{
-        method: 'GET'
+const saveStartGame = async () => {
+    await fetch('/api/savegame', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: {
+     player_health: gameStats.player.checkHealth(),
+     enemy_id: gameStats.ai.getEnemyId(),
+     enemy_health: gameStats.ai.checkHealth()
     }
-    );
-
-    return cards;
+    })
+    .then((res) => {
+     if(res.ok){
+         console.log('game saved');
+     }
+    })
+    .catch((err) => console.error(err));
 }
 
 const saveGame = async () => {
-    //TODO: refactor to work with backend
-    /**
-     * need to decide where to get userId from. Should link back to users
-     * table or sessions table?
-     * await fetch('/api/game-play/save-game/:userId' {
-     * method: POST,
-     * headers: [ "content-type": "application-json" ],
-     * body: {
-     *  playerHealth: gameStats.player.checkHealth(),
-     *  playerDeckId: gameStats.player.getDeckId(),
-     *  enemyId: gameStats.ai.getEnemyId(),
-     *  enemyHealth: gameStats.ai.checkHealth(),
-     *  enemyDeckId: gameStats.ai.getDeckId(),
-     * }
-     * })
-     * .then((res) => {
-     *  if(res.ok){
-     *      console.log('game saved');
-     *  }
-     * })
-     * .catch((err) => console.error(err));
-     */
+    await fetch('/api/savegame', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: {
+     player_health: gameStats.player.checkHealth(),
+     enemy_health: gameStats.ai.checkHealth()
+    }
+    })
+    .then((res) => {
+     if(res.ok){
+         console.log('game saved');
+     }
+    })
+    .catch((err) => console.error(err));
 }
 
 const turnBased = async() => {
@@ -76,26 +78,21 @@ const turnBased = async() => {
     } else if(playerAlive){
         playerVictory();
     } else if(aiAlive) {
-        aiVictory();
+        enemyVictory();
     }
 }
 
-const enemyAssemble = async () => {
-    //TODO: can we handle picking the enemy in the back end before the game is rendered
-    // getCards() should be a fetch call to an api endpoint that returns a preset deck
-    //* const deckId = document.querySelector('#enem-img').getAttribute('data-enemy-deckId');
-    //* const cards = await getCards(parseInt(deckId));
-    //* const enemyIdData = document.querySelector('#enemy-Img').getAttribute('data-enemy-id');
-    // depending if the previous value returns as string 
-    //* const enemyId = parseInt(enemyIdData);
+const enemyAssemble = () => {
+    const enemyIdData = document.querySelector('#enemy-Img').getAttribute('data-enemy-id');
+    const enemyId = parseInt(enemyIdData);
 
-    //* const ai = new Enemy(enemyId, deckId, cards);
+    const ai = new Enemy(enemyId);
 
-    //* return ai;
+    return ai;
 }
 
 const attackCb = () => {
-    const strength = document.getElementById('playerSelectedCard').children[0].getAttribute('data-attack');
+    const strength = document.getElementById('played-card').getAttribute('data-attack');
     
     gameStats.player.attack(gameStats.ai, strength );
 
@@ -105,7 +102,7 @@ const attackCb = () => {
 }
 
 const defendCb = () => {
-    const defense = document.getElementById('playerSelectedCard').children[0].getAttribute('data-defense');
+    const defense = document.getElementById('played-card').getAttribute('data-defense');
 
     gameStats.player.defend(defense);
 
@@ -125,7 +122,9 @@ const renderPlayedCard = (e) => {
     const clickedCardAttack = e.target.getAttribute('data-attack');
     const clickedCardDefense = e.target.getAttribute('data-defense');
     const playSection = document.getElementById('playedCardSection');
-    const playedCard = document.createElement('img');
+    const playedCard = document.getElementById('played-card');
+
+    playedCard.classList.remove('hide-card');
     
     playedCard.setAttribute('src', clickedCard);
     playedCard.setAttribute('data-attack', clickedCardAttack);
@@ -142,7 +141,7 @@ const renderPlayedCard = (e) => {
 const getPlayerChoice = () => {
     if(gameStats.player.isAlive()){
         document.getElementById('turnTitle').textContent = 'Your turn';
-        document.getElementById('playerCards').addEventListener('dblclick', renderPlayedCard);
+        document.getElementById('playerCards').addEventListener('click', renderPlayedCard);
     }
 }
 
@@ -195,14 +194,9 @@ const getAiChoice = () => {
 }
 
 const playerVictory = () => {
-    // TODO: Set up timer so the the user can see they won and maybe display some
-    // TODO: some animation/modal/picture while timer is active then relocate user
     window.location.replace('/game-play/player-victory');
 }
 
 const enemyVictory = () => {
-
-    // TODO: Set up timer so the the user can see they lost and maybe display some
-    // TODO: some animation/modal/picture while timer is active then relocate user
     window.location.replace('/game-play/enemy-victory');
 }
