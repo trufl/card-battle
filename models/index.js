@@ -1,8 +1,12 @@
-const Scores = require("./Scores")
-const Deck = require("./Deck")
-const User = require("./Users")
-const Card = require("./cards")
-const Deck_Card = require('./deckCard')
+const Scores = require("./Scores");
+const Deck = require("./Deck");
+const User = require("./Users");
+const Card = require("./cards");
+const Enemy = require('./Enemy');
+const EnemyDeck = require('./EnemyDeck');
+const Gamestate = require('./Gamestate');
+const EnemyDeck_Card = require('./enemyDeckCard');
+const Deck_Card = require('./deckCard');
 const sequelize = require("../config/connection");
 
 
@@ -23,14 +27,52 @@ Deck.belongsTo(User, {
 Deck.belongsToMany(Card,{
     through: Deck_Card
 });
-
 Card.belongsToMany(Deck, {
     through: Deck_Card
-})
+});
+
+
+
+Enemy.hasMany(EnemyDeck, {
+    foreignKey: 'enemy_id'
+});
+EnemyDeck.belongsTo(Enemy, {
+    foreignKey: 'enemy_id'
+});
+
+EnemyDeck.belongsToMany(Card, {
+    through: EnemyDeck_Card
+});
+Card.belongsToMany(EnemyDeck, {
+    through: EnemyDeck_Card
+});
+
+
+
+User.hasMany(Gamestate, {
+    foreignKey: 'playerId'
+});
+Gamestate.belongsTo(User, {
+    foreignKey: 'playerId'
+});
+
+Enemy.hasMany(Gamestate, {
+    foreignKey: 'enemyId'
+});
+Gamestate.belongsTo(Enemy, {
+    foreignKey: 'enemyId'
+});
+
+
 
 module.exports = {
 Card,
 Deck,
 Scores,
-User
+User,
+Enemy,
+Gamestate,
+EnemyDeck,
+EnemyDeck_Card,
+Deck_Card
 };
