@@ -22,7 +22,6 @@ Gamestate.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    // foreign key for enemy id
     enemyId: {
       type: DataTypes.INTEGER,
       allowNull: false,

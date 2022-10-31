@@ -25,6 +25,10 @@ const init = async () => {
     }
 }
 
+const getPrevGame = async () => {
+    
+}
+
 const saveStartGame = async () => {
     await fetch('/api/savegame', {
     method: 'POST',

@@ -72,6 +72,14 @@ router.get('/cardstore', (req, res) =>{
 
 });
 
+router.get('/victory', (req, res) => {
+    res.status(200).render('youwon');
+});
+
+router.get('/youlost', (req, res) => {
+    res.status(200).render('youdied');
+});
+
 router.get('/highscores', async (req, res) =>{
     try{
         const highScores = await Scores.findAll({include: User});
@@ -88,7 +96,7 @@ router.get('/highscores', async (req, res) =>{
 });
 
 router.get('/', (req, res) =>{
-    res.status(200).render('home');
+    res.status(200).render('home', {logged_in: req.session.logged_in});
 });
 
 module.exports = router;
