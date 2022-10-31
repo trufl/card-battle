@@ -58,10 +58,15 @@ router.get('/battle', async (req, res) =>{
             };
         };
 
+        req.session.save(() => {
+            req.session.inGame = true;
+        });
+
         res.render('battle', {
             cards,
             playerDeck,
-            logged_in: req.session.logged_in
+            logged_in: req.session.logged_in,
+            inGame : req.session.inGame
         })
     }catch(err){
         res.status(500).json(err)
@@ -73,10 +78,12 @@ router.get('/cardstore', (req, res) =>{
 });
 
 router.get('/victory', (req, res) => {
+    req.session.inGame = false;
     res.status(200).render('youwon');
 });
 
 router.get('/youlost', (req, res) => {
+    req.session.inGame = false;
     res.status(200).render('youdied');
 });
 

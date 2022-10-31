@@ -99,7 +99,6 @@ router.post('/savegame', async (req, res) =>{
         });
         req.session.save(() => {
             req.session.gameStateId = game.id;
-            req.session.inGame = true;
         });
         if(!game){
             return res.status(500).json("Failed to create gamestate");
