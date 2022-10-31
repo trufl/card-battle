@@ -70,11 +70,11 @@ router.post('/newdeck', async (req,res) =>{
     try{//in the req.body must supply and object with cards having an array of objects with cardId key and value of the cards id that they want to add to their new deck
         const newDeck = await Deck.create({user_id:req.session.user_id});
         
-        const card1 = await Card.findOne({where: {id: req.body.card_1_id}})
-        const card2 = await Card.findOne({where: {id: req.body.cards[i].card_2_id}});
-        const card3 = await Card.findOne({where: {id: req.body.cards[i].card_3_id}});
-        const card4 = await Card.findOne({where: {id: req.body.cards[i].card_4_id}});
-        const card5 = await Card.findOne({where: {id: req.body.cards[i].card_5_id}});
+        const card1 = await Card.findOne({where: {id: req.body.card_1_id}});
+        const card2 = await Card.findOne({where: {id: req.body.card_2_id}});
+        const card3 = await Card.findOne({where: {id: req.body.card_3_id}});
+        const card4 = await Card.findOne({where: {id: req.body.card_4_id}});
+        const card5 = await Card.findOne({where: {id: req.body.card_5_id}});
 
         await newDeck.addCard(card1, {through: {selfGranted: false}});
         await newDeck.addCard(card2, {through: {selfGranted: false}});
