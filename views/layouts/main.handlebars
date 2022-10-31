@@ -4,31 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/tailwind.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Press+Start+2P&display=swap"
+        rel="stylesheet">
     <title>User Registry</title>
 </head>
 
 <body>
-    <header class="flex  ">
-        <h1>
-            User Registry
+    <header class="border-4 h-32 border-black flex flex-row justify-between content-center bg-orange-600">
+        <h1 class="text-white text-6xl font-press-start p-10">
+            Card Battle
         </h1>
+        <a href="customize">
+        <nav class="text-white h-20 w-20 flex flex-row justify-between content-center">
+            <svg xmlns=" http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-40 h-40">
+                <path stroke-linecap="square" stroke-linejoin="square" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+        </nav>
+        </a>
         <!-- Only display the logout button if the user is logged in -->
         {{#if logged_in}}
         <nav>
-            <button class="btn" id="logout">logout</button>
+            <button class="btn" id="logout">Logout</button>
         </nav>
         {{/if}}
     </header>
     <main>
         {{{ body }}}
-    </main>
-    <footer>
 
+    </main>
+    <footer class="border-4 h-28 w-full absolute inset-x-0 bottom-0 border-black flex flex-row justify-start content-center bg-orange-600">
+        <a href="https://github.com/trufl/card-battle" target="_blank">
+            <button class="btn-game m-8">
+                Github Repository
+            </button>
+        </a>
     </footer>
 
     <!-- Only include the logout script if the user is logged in -->
     {{#if logged_in}}
-    <script src="/js/logout.js"></script>
+    <script src=" /js/logout.js">
+    </script>
     {{/if}}
 </body>
 

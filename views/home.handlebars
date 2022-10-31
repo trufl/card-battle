@@ -1,33 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=VT323&display=swap"
-        rel="stylesheet">
-</head>
-
-<body>
-    <header class="flex flex-row justify-between bg-orange-700">
-        <h1 class="text-white ">Card Battle</h1>
-        <nav>
-            <h2>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-            </h2>
-        </nav>
-    </header>
-    <main>
-        
-    </main>
-</body>
-
-</html>
+<section class="min-h-screen w-screen bg-indigo-700 flex justify-center content-center relative pb-28 pt-32">
+    <section class="p-10 border-4 border-black bg-orange-600 h-fit">
+        <a href="/signup">
+            <button class="btn-game">
+                Sign Up
+            </button>
+        </a>
+        {{#if logged_in}}
+        <div></div>
+        {{else}}
+        <a href="/login">
+            <button class="btn-game">
+                Login
+            </button>
+        </a>
+        {{/if}}
+        {{#if logged_in}}
+        <a href="/battle">
+            <button class="btn-game">
+                Battle as {{{username}}}
+            </button>
+        </a>
+        {{else}}
+        <a href="/battle">
+            <button class="btn-game">
+                Battle as Guest
+            </button>
+        </a>
+        {{/if}}
+    </section>
+</section>

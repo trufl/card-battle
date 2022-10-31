@@ -1,19 +1,32 @@
+<section class="h-screen w-screen bg-indigo-700 flex place-content-center">
+    <div class="login-card p-10 m-20 border-4 border-black bg-orange-600 h-fit">
+        <h2 class="text-white font-press-start text-lg">Login</h2>
 
-<div class="login-card">
-<h2 class="login-title">Login</h2>
-<form class="form login-form">
-    <div class="form-group">
-        <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
+        {{#if logged_in}}
+        <div class="text-white font-press-start">You are already logged in!</div>
+        <a href="/battle">
+            <button class="btn-game">
+                Battle as {{{username}}}
+            </button>
+        </a>
+        {{else}}
+        <form class="form login-form">
+            <div class="form-group">
+                <label for="email-login">Email:</label>
+                <input class="form-input" type="text" id="email-login" />
+            </div>
+
+            <div class="form-group">
+                <label for="password-login">Password:</label>
+                <input class="form-input" type="password" id="password-login" />
+            </div>
+
+            <div class="form-group">
+                <button class="btn" type="submit">Login</button>
+            </div>
+        </form>
+        {{/if}}
     </div>
-    <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
-    </div>
-    <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
-    </div>
-</form>
-</div>
+</section>
 
 <script src="/js/login.js"></script>

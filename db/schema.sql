@@ -5,6 +5,10 @@ DROP DATABASE IF EXISTS battlecard_db;
 -- DROP TABLE IF EXISTS deck;
 -- DROP TABLE IF EXISTS scores;
 -- DROP TABLE IF EXISTS users;
+-- INSERT TABLE  cards;
+-- INSERT TABLE  deck;
+-- INSERT TABLE  scores;
+-- INSERT TABLE  users;
 -- SET FOREIGN_KEY_CHECKS = 1;
 
 

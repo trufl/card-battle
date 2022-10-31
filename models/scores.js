@@ -32,11 +32,6 @@ Scores.init(
       },
     },
 
-    date: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        
-    },
 },
   {
     sequelize,
