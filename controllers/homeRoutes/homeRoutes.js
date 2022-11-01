@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Scores, Deck, Card } = require('../../models');
+const { User, Scores, Deck, Card, Gamestate, EnemyDeck } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/login', (req, res) => {
@@ -38,23 +38,48 @@ router.get('/customize', withAuth, async (req, res) =>{
 router.get('/battle', async (req, res) =>{
     try{
         let playerDeck;
-        let cards = await Card.findAll({raw: true});
-        for(i=0;i<5;i++){
-            const random = Math.floor(Math.random() * 10);
-            cards.splice(random-i, 1);
-        };
+        let cards;
         //The where clause in this deck.findAll needs to be replaced with some sort of parameter to indicate what deck they chose
         if(req.session.logged_in){
-            playerDeck = await Deck.findAll({
-                raw: true,
-                where: {id: 1},
-                include: Card,
-            })
+            if(req.session.inGame){
+                const gameData = await Gamestate.findOne({
+                    where:{id:req.session.gameStateId}
+                });
+
+                playerDeck = await Deck.findOne({
+                    raw: true,
+                    where: {user_id: gameData.playerId},
+                    include: Card,
+                });
+
+                cards = await EnemyDeck.findOne({
+                    raw: true,
+                    where: {enemy_id: gameData.enemyId},
+                    include: Card,
+                });
+            }else{
+                playerDeck = await Deck.findOne({
+                    raw: true,
+                    where: {user_id: req.session.user_id},
+                    include: Card,
+                });
+
+                cards = await Card.findAll({raw: true});
+                for(i=0;i<5;i++){
+                    const random = Math.floor(Math.random() * 10);
+                    cards.splice(random-i, 1);
+                };
+            };
         }else{
             playerDeck = await Card.findAll({raw: true});
             for(j=0;j<5;j++){
                 const random = Math.floor(Math.random() * 10);
                 playerDeck.splice(random-j, 1);
+            };
+            cards = await Card.findAll({raw: true});
+            for(i=0;i<5;i++){
+                const random = Math.floor(Math.random() * 10);
+                cards.splice(random-i, 1);
             };
         };
 
