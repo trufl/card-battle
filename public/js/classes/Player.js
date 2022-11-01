@@ -1,7 +1,8 @@
 class Player {
-    constructor() {
+    constructor(id) {
         this.health = 1000;
         this.lastAttack = true;
+        this.enemyId = id;
     }
 
     attack(opp, hitpoints) {
@@ -40,20 +41,8 @@ class Player {
             return false;
         }
     }
-}
 
-class Enemy extends Player {
-
-    constructor(enemyId) {
-        this.enemyId = enemyId;
+    getEnemyId() {
+        return this.enemyId;
     }
-
-    pickCard() {
-        return Math.floor(Math.random() * 5) + 1;
-    }
-}
-
-module.exports = {
-    Player,
-    Enemy,
 }

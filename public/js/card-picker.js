@@ -83,7 +83,7 @@ const submitHandler = () => {
         })
         ,then((res) => {
             if(res.ok) {
-                window.location.replace('/character-customize')
+                window.location.replace('/customize');
             }
         })
         .catch((err) => console.error(err));

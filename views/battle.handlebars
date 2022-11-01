@@ -18,7 +18,7 @@
                 {{/each}}
             </section>
             <section aria-details="below cards" class="flex h-2/4 w-full justify-center" >
-                <img class="hide-card" id="playedEnemyCard" data-defense="" data-strength="" src="" class="my-2">
+                <img id="playedEnemyCard" src="" class="my-2">
             </section>
         </section>
 
@@ -31,16 +31,16 @@
                 <section id="playerCards" class="flex h-2/4 w-full">
                     {{#if logged_in}}
                     {{#each playerDeck}}
-                    <img data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}" src="/images/cardBattle/{{'cards.filename'}}">
+                    <img class="player-card" data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}" src="/images/cardBattle/{{'cards.filename'}}">
                     {{/each}}
                     {{else}}
                     {{#each playerDeck}}
-                    <img data-defense="{{defenseStat}}" data-strength="{{attackStat}}" src="/images/cardBattle/{{filename}}">
+                    <img class="player-card" data-defense="{{defenseStat}}" data-strength="{{attackStat}}" src="/images/cardBattle/{{filename}}">
                     {{/each}}
                     {{/if}}
                 </section>
             </section>
-            <section class="h-full w-1/5 flex-col mt-1 ">
+            <section id="button-section" class="h-full w-1/5 flex-col mt-1 hide-button">
                 <h1 class="font-extrabold " data-newGame="{{inGame}}" id="title">Your Turn</h1>
                 <h2></h2>
                 <button class="btn-game mx-0 w-2/4 " id="attackButton">Attack</button>
@@ -49,7 +49,8 @@
             </section>
 
         </section>
-
     </section>
 </section>
-
+<script src="/js/classes/Player.js"></script>
+<script src="/js/classes/GameClass.js"></script>
+<script src="/js/play-game.js"></script>

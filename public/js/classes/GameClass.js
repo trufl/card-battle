@@ -13,5 +13,3 @@ class GameStats {
         this.turn = turn;
     }
 };
-
-module.exports = GameStats;

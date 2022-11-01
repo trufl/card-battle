@@ -1,4 +1,4 @@
-const { Player, Enemy, GameStats} = require('./classes');
+//const { Player, Enemy, GameStats} = require('./classes');
 // const $playerCards = document.querySelectorAll('playerCards');
 const $attackButton = document.getElementById('attackButton');
 const $defendButton = document.getElementById('defenseButton');
@@ -6,13 +6,13 @@ const $skipButton = document.getElementById('skipButton');
 let gameStats;
 
 const init = async () => {
-    const isNewGame = document.querySelector('#title').getAttribute('data-newGame');
+    const isNewGame = false //document.querySelector('#title').getAttribute('data-newGame');
 
-    if(isNewGame) {
-        const player = new Player();
+    if(!isNewGame) {
+        const player = new Player(0);
         const ai = enemyAssemble();
         gameStats = new GameStats(player, ai);
-        saveStartGame();
+        //saveStartGame();
         turnBased();
     } else {
         gameStats = await getPrevGame();
@@ -134,11 +134,11 @@ const turnBased = async() => {
         if(turn) {
             gameStats.setTurn(false);
             getPlayerChoice();
-            await saveGame();
+            //await saveGame();
         } else {
             gameStats.setTurn(true);
             getAiChoice();
-            await saveGame();
+            //await saveGame();
         }
     } else if(playerAlive){
         playerVictory();
@@ -148,10 +148,10 @@ const turnBased = async() => {
 }
 
 const enemyAssemble = () => {
-    const enemyIdData = document.querySelector('#enemy-Img').getAttribute('data-enemy-id');
-    const enemyId = parseInt(enemyIdData);
+    //const enemyIdData = document.querySelector('#enemy-health-area').getAttribute('data-enemyid');
+    //const enemyId = parseInt(enemyIdData);
 
-    const ai = new Enemy(enemyId);
+    const ai = new Player(1);
 
     return ai;
 }
@@ -164,7 +164,7 @@ const attackCb = async () => {
     
     gameStats.player.attack(gameStats.ai, strength );
 
-    document.getElementById('buttonSection').style.display = 'none';
+    document.getElementById('button-section').classList.add('hide-button');
 
     await saveGame();
     turnBased();
@@ -178,14 +178,14 @@ const defendCb = async() => {
 
     gameStats.player.defend(defense);
 
-    document.getElementById('buttonSection').style.display = 'none';
+    document.getElementById('button-section').classList.add('hide-button');
 
     await saveGame();
     turnBased();
 }
 
 const skipCb = () => {
-    document.getElementById('buttonSection').style.display = 'none';
+    document.getElementById('button-section').classList.add('hide-button');
     const playedCard = document.getElementById('playedPlayerCard');
 
     playedCard.classList.add('hide-card');
@@ -206,7 +206,7 @@ const renderPlayedCard = (e) => {
     playedCard.setAttribute('data-defense', clickedCardDefense);
     
     
-    document.getElementById('buttonSection').style.display = 'block';
+    document.getElementById('button-section').classList.remove('hide-button');
 
     $attackButton.addEventListener('click', attackCb);
     $defendButton.addEventListener('click', defendCb);
@@ -215,24 +215,21 @@ const renderPlayedCard = (e) => {
 
 const getPlayerChoice = () => {
     if(gameStats.player.isAlive()){
-        document.getElementById('turnTitle').textContent = 'Your turn';
-        document.getElementById('playerCards').addEventListener('click', renderPlayedCard);
+        const playerCards = document.querySelectorAll('.player-card');
+
+        playerCards.forEach((card) => card.addEventListener('click', renderPlayedCard));
     }
 }
 
 const aiAttack = (strength) => {
     gameStats.ai.attack(gameStats.player, strength);
-    document.getElementById('buttonSection').style.display = 'block';
 
     turnBased();
 }
 
-const aiDefend = () => {
-    const aiCard = document.getElementById('enemy-card');
-    const defense = aiCard.getAttribute('data-defense');
-
+const aiDefend = (defense) => {
     gameStats.ai.defend(defense);
-    document.getElementById('buttonSection').style.display = 'block';
+
     turnBased();
 }
 
@@ -240,34 +237,31 @@ const getAiChoice = () => {
     const isAlive = gameStats.ai.isAlive();
 
     if(isAlive) {
-        const cardId = gameStats.ai.pickCard();
         const health = gameStats.ai.checkHealth();
-        const enemyCards = document.querySelectorAll('enemy-card');
-        let cardSrc;
-        let cardStr;
-        let cardDef;
+        const enemyCards = document.querySelectorAll('.enemy-card');
+        const playedEnemyCard = document.querySelector('#playedEnemyCard');
+        const card = enemyCards[Math.floor(Math.random() * 5) + 1];
+        const cardSrc = card.getAttribute('src');
+        const cardStr = card.getAttribute('data-strength');
+        const cardDef = card.getAttribute('data-defense');
 
-        enemyCards.forEach((card) => {
-            if(card) {
-                
-            }
-        });
+        playedEnemyCard.setAttribute('src', cardSrc);
 
         if(health > 100) {
-            aiAttack();
+            aiAttack(cardStr);
         } else {
 
             const lastAttack = gameStats.ai.checkLastMove();
 
             if(!lastAttack) {
-                aiAttack();
+                aiAttack(cardStr);
             } else {
                 const play = Math.floor(Math.random() * 2) + 1
 
                 if(play === 1){
-                    aiAttack();
+                    aiAttack(cardStr);
                 } else if (play === 2){
-                    aiDefend();
+                    aiDefend(cardDef);
                 } else {
                     console.log(`Error, play = ${play}`);
                 }
@@ -283,3 +277,5 @@ const playerVictory = () => {
 const enemyVictory = () => {
     window.location.replace('/game-play/enemy-victory');
 }
+
+init();
