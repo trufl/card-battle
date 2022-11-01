@@ -1,36 +1,17 @@
-# card-battle
-Battle with cards
-
-## Table of Contents
-* [Description](##Description)
-* [Technologies](##Technologies)
-* [Demo](##Demo)
-* [Screenshot](##Screenshot)
-* [Installation](##Installation)
-* [Usage](##Usage)
-* [License](##License)
-* [Questions](##Questions)
-
+# Card Battle [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
 
+Card Battle is a turn based card game.  We decided to create this game...  This is a full-stack application.  It uses a mysql database, an express backend, and a handlebars view engine to render the page.
 
-### Technologies
+## Table of Contents 
 
-As this application runs on node, many of the foundational technologies in this application use node npm packages, namely MySQL2, Sequelize, and Express. Naturally, SQL was used as the database, interacted with using sequelize node package as previously mentioned. Express was used for the server instance, which handles routes and controls sequelize operations.
-
-### Future Development
-
-
-## Demo
-
-
-## Screenshot
-
-### Sample View of Fetch Call via Insomnia
-
-
----
+- [Usage](#Usage)
+- [Credits](#Credits)
+- [License](#License)
+- [How to Contribute](#How-to-Contribute)
+- [Tests](#Tests)
+- [Questions](#Questions)
 
 ## Installation
 
@@ -39,14 +20,32 @@ On MySQL CLI: run `SOURCE db/schema.sql`
 On CLI: run `npm run seed`  
 Create an .env file in the root directory with three variables with your respective credentials: `DB_NAME='database name'` `DB_USER='user name'` `DB_PASSWORD='SQL password'`  
 
-
 ## Usage
 
-In Windows Command Processor/Terminal, run `node server.js`  
+To play this game, you either need to sign in or play as a guest.  If you are playing as a guest, you cannot pick your own deck or save your score.  If you chose to sign in you will first have to customize your deck.  After that you can then play.  The rules of the game are simple.  First select the card you would like to play.  After that choose what you would like to do.  You can either skip, defend, or attack.  Skip allows you to change turns without playing a card.  Defend allows you to heal yourself.  Attack allows you to do damage to the enemy AI.  The game is over when either the AI or player reaches 0 hp.
+
+## Credits
+
+[Morgan Tolman](https://github.com/unheardof77)
+[Jerome Nixon](https://github.com/jeromemn)  
+[Tristan Saragosa](https://github.com/trufl)  
+[James Xalis](https://github.com/jamesxalis)  
+[Leo Roccaforte](https://github.com/leorocca40)  
 
 
 ## License
 
-No license
+This application uses the MIT license.
 
+## How to Contribute
+
+If you would like to contribute, first fork the application from github then make a pull request with a detailed description of why you think this would improve our game.
+
+## Tests
+
+N/A
+
+## Questions
+
+If you have any further questions, concerns, or feedback feel free to email me at morgan.tolman04@gmail.com.  Another way you can contact me is through my [GitHub](https://github.com/unheardof77) account. 
 ---
