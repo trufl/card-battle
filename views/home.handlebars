@@ -1,32 +1,36 @@
 <section
     class=" max-h-screen w-full bg-indigo-700 flex justify-center content-center relative pb-32 pt-32 m-0 overflow-x-hidden">
     <section class="p-10 border-4 border-black bg-orange-600 h-fit">
-        <a href="/signup">
-            <button class="btn-game">
-                Sign Up
-            </button>
-        </a>
         {{#if logged_in}}
         <div></div>
-        {{else}}
-        <a href="/login">
-            <button class="btn-game">
-                Login
-            </button>
-        </a>
-        {{/if}}
-        {{#if logged_in}}
         <a href="/battle">
             <button class="btn-game">
                 Battle as {{{username}}}
             </button>
         </a>
-        <a href="/customize">
+          <a href="/customize">
             <button class="btn-game">
                 Edit Deck {{{username}}}
             </button>
         </a>
         {{else}}
+        <a href="/signup">
+            <button class="btn-game">
+                Sign Up
+            </button>
+        </a>
+        <a href="/login">
+            <button class="btn-game">
+                Login
+            </button>
+        </a>
+        {{!-- {{#if logged_in}}
+        <a href="/customize">
+            <button class="btn-game">
+                Edit Deck {{{username}}}
+            </button>
+        </a> --}}
+        {{!-- {{else}} --}}
         <a href="/battle">
             <button class="btn-game">
                 Battle as Guest
