@@ -14,11 +14,11 @@
         <section aria-details="upper section" class="flex-row w-full h-2/4">
             <section aria-details="card section" class="flex h-2/4">
                 {{#each cards}}
-                <img data-defense="{{defenseStat}}" data-strength="{{attackStat}}" src="/images/cardBattle/{{filename}}">
+                <img class="enemy-card" data-defense="{{defenseStat}}" data-strength="{{attackStat}}" src="/images/cardBattle/{{filename}}">
                 {{/each}}
             </section>
             <section aria-details="below cards" class="flex h-2/4 w-full justify-center" >
-                <img id="playedEnemyCard" data-defense="" data-strength="" src="" class="my-2">
+                <img class="hide-card" id="playedEnemyCard" data-defense="" data-strength="" src="" class="my-2">
             </section>
         </section>
 

@@ -220,12 +220,10 @@ const getPlayerChoice = () => {
     }
 }
 
-const aiAttack = () => {
-    const aiCard = document.getElementById('enemy-card');
-    const strength = aiCard.getAttribute('data-strength');
-    
+const aiAttack = (strength) => {
     gameStats.ai.attack(gameStats.player, strength);
     document.getElementById('buttonSection').style.display = 'block';
+
     turnBased();
 }
 
@@ -242,8 +240,18 @@ const getAiChoice = () => {
     const isAlive = gameStats.ai.isAlive();
 
     if(isAlive) {
-        const card = gameStats.ai.pickCard();
+        const cardId = gameStats.ai.pickCard();
         const health = gameStats.ai.checkHealth();
+        const enemyCards = document.querySelectorAll('enemy-card');
+        let cardSrc;
+        let cardStr;
+        let cardDef;
+
+        enemyCards.forEach((card) => {
+            if(card) {
+                
+            }
+        });
 
         if(health > 100) {
             aiAttack();
