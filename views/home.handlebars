@@ -15,9 +15,14 @@
         </a>
         {{/if}}
         {{#if logged_in}}
-        <a href="/customize">
+        <a href="/battle">
             <button class="btn-game">
                 Battle as {{{username}}}
+            </button>
+        </a>
+        <a href="/customize">
+            <button class="btn-game">
+                Edit Deck {{{username}}}
             </button>
         </a>
         {{else}}

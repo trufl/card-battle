@@ -1,4 +1,8 @@
 <section class="min-h-screen w-screen bg-indigo-700 relative pb-28 pt-32">
+  <a href="/userDeck">
+<button id="submit-btn"> Confirm Deck</button>
+</a>
+
   <section class="p-10 border-4 border-black bg-orange-600 h-fit">
     <h3 class="text-center text-white font-press-start font-extrabold text-3xl pt-4"> Select cards</h3>
 
@@ -21,7 +25,7 @@
             {{#each cards}}
             <div class="flex flex-shrink-0 relative w-60 min-width-full sm:w-auto h-72">
               <!-- need to set defense and strength to card id-->
-              <img id="card-img-area" class="card-selector card-img" card_id="{{cardId}}" src="/images/cardBattle/{{filename}}">
+              <img id="card-img-area" class="card-selector card-img" data_id="{{cardId}}" src="/images/cardBattle/{{filename}}">
 
             </div>
             {{/each}}
