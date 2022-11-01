@@ -157,21 +157,21 @@ const enemyAssemble = () => {
 }
 
 const attackCb = async () => {
-    const strength = document.getElementById('played-card').getAttribute('data-attack');
+    const strength = document.getElementById('playedPlayerCard').getAttribute('data-attack');
     const playedCard = document.getElementById('playedPlayerCard');
 
     playedCard.classList.add('hide-card');
     
-    gameStats.player.attack(gameStats.ai, strength );
+    gameStats.player.attack(gameStats.ai, strength);
 
     document.getElementById('button-section').classList.add('hide-button');
 
-    await saveGame();
+    //await saveGame();
     turnBased();
 }
 
 const defendCb = async() => {
-    const defense = document.getElementById('played-card').getAttribute('data-defense');
+    const defense = document.getElementById('playedPlayerCard').getAttribute('data-defense');
     const playedCard = document.getElementById('playedPlayerCard');
 
     playedCard.classList.add('hide-card');
@@ -180,7 +180,7 @@ const defendCb = async() => {
 
     document.getElementById('button-section').classList.add('hide-button');
 
-    await saveGame();
+    //await saveGame();
     turnBased();
 }
 
@@ -195,14 +195,14 @@ const skipCb = () => {
 
 const renderPlayedCard = (e) => {
     const clickedCard = e.target.getAttribute('src');
-    const clickedCardAttack = e.target.getAttribute('data-attack');
+    const clickedCardAttack = e.target.getAttribute('data-strength');
     const clickedCardDefense = e.target.getAttribute('data-defense');
     const playedCard = document.getElementById('playedPlayerCard');
 
     playedCard.classList.remove('hide-card');
     
     playedCard.setAttribute('src', clickedCard);
-    playedCard.setAttribute('data-attack', clickedCardAttack);
+    playedCard.setAttribute('data-strength', clickedCardAttack);
     playedCard.setAttribute('data-defense', clickedCardDefense);
     
     
@@ -240,7 +240,7 @@ const getAiChoice = () => {
         const health = gameStats.ai.checkHealth();
         const enemyCards = document.querySelectorAll('.enemy-card');
         const playedEnemyCard = document.querySelector('#playedEnemyCard');
-        const card = enemyCards[Math.floor(Math.random() * 5) + 1];
+        const card = enemyCards[Math.floor(Math.random() * 5) + 0];
         const cardSrc = card.getAttribute('src');
         const cardStr = card.getAttribute('data-strength');
         const cardDef = card.getAttribute('data-defense');
@@ -271,11 +271,11 @@ const getAiChoice = () => {
 }
 
 const playerVictory = () => {
-    window.location.replace('/game-play/player-victory');
+    window.location.replace('/victory');
 }
 
 const enemyVictory = () => {
-    window.location.replace('/game-play/enemy-victory');
+    window.location.replace('/youlost');
 }
 
 init();
