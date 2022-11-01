@@ -8,27 +8,27 @@
     }
 
     .hide-card {
-        @apply hidden
+        @apply hidden;
     }
 
     .bgrnd-selected {
-        @apply border-yellow-400
+        @apply border-yellow-400;
     }
 
     .hide-button {
-        @apply hidden
+        @apply hidden;
     }
 
     .good-health {
-        @apply text-lime-500
+        @apply text-lime-500;
     }
 
     .mid-health{
-        @apply text-orange-400
+        @apply text-orange-400;
     }
 
     .low-health {
-        @apply text-red-700
+        @apply text-red-700;
     }
 
 }
