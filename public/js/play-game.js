@@ -240,7 +240,7 @@ const getAiChoice = () => {
         const health = gameStats.ai.checkHealth();
         const enemyCards = document.querySelectorAll('.enemy-card');
         const playedEnemyCard = document.querySelector('#playedEnemyCard');
-        const card = enemyCards[Math.floor(Math.random() * 5) + 1];
+        const card = enemyCards[Math.floor(Math.random() * 5)];
         const cardSrc = card.getAttribute('src');
         const cardStr = card.getAttribute('data-strength');
         const cardDef = card.getAttribute('data-defense');
