@@ -21,7 +21,7 @@
             {{#each cards}}
             <div class="flex flex-shrink-0 relative w-60 min-width-full sm:w-auto h-72">
               <!-- need to set defense and strength to card id-->
-              <img id="card-img-area" class="card-selector" card_id="{{cardId}}" src="/images/cardBattle/{{filename}}">
+              <img id="card-img-area" class="card-selector card-img" card_id="{{cardId}}" src="/images/cardBattle/{{filename}}">
 
             </div>
             {{/each}}
@@ -42,10 +42,14 @@
   </div>
 </section>
 </section>
-
+<button id="submit-btn"> Confirm Deck</button>
 
 
 </section>  
+
+<script src="/js/customize.js"> </script>
+<script src="/js/card-picker.js"></script>
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
 {{!-- <section>
   <div class="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4 ">
@@ -69,7 +73,3 @@
   </div>
 </section> --}}
 
-
-<script src="/js/customize.js"> </script>
-<script src="/js/card-picker.js"></script>
-<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
