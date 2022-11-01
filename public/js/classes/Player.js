@@ -7,7 +7,7 @@ class Player {
 
     attack(opp, hitpoints) {
         this.lastAttack = true;
-        if(opp.health > hitpoints) {
+        if(opp.checkHealth() > hitpoints) {
             opp.health = opp.health - hitpoints;
         } else {
             opp.health = 0;
@@ -15,6 +15,7 @@ class Player {
     }
 
     defend(defensePts) {
+        this.lastAttack = false;
         this.health += defensePts;
     }
 

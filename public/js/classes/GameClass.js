@@ -5,6 +5,14 @@ class GameStats {
         this.turn = true;
     }
 
+    getPlayer() {
+        return this.player;
+    }
+
+    getAi() {
+        return this.ai;
+    }
+
     getTurn() {
         return this.turn;
     }

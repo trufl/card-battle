@@ -4,18 +4,10 @@ const $skipButton = document.getElementById('skipButton');
 let gameStats;
 
 const init = async () => {
-    const isNewGame = document.querySelector('#title').getAttribute('data-newGame');
-
-    if(!isNewGame) {
         const player = new Player(0);
         const ai = enemyAssemble();
         gameStats = new GameStats(player, ai);
-        saveStartGame();
         turnBased();
-    } else {
-        gameStats = await getPrevGame();
-        turnBased();
-    }
 }
 
 const displayHealth = () => {
@@ -59,67 +51,6 @@ const displayHealth = () => {
     }
 }
 
-const getPrevGame = async () => {
-
-    try{
-    const prevGame = await fetch('/api/getgame').then((res) => {
-        if(res.ok) {
-            res.json()
-            .then((data) => data)
-        }
-    });
-    const { player_id, player_health, enemy_id, enemy_health }  = prevGame;
-
-    const player = new Player(0);
-    const ai = new Enemy(enemy_id);
-
-    player.setHealth(parseInt(player_health));
-    ai.setHealth(parseInt(enemy_health));
-
-    const prevGameStats = new GameStats(player, ai)
-
-    return prevGameStats;
-
-    } catch(err) {
-        console.error(err);
-    }
-}
-
-const saveStartGame = async () => {
-    await fetch('/api/savegame', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: {
-     player_health: gameStats.player.checkHealth(),
-     enemy_id: gameStats.ai.getEnemyId(),
-     enemy_health: gameStats.ai.checkHealth()
-    }
-    })
-    .then((res) => {
-     if(res.ok){
-         console.log('game saved');
-     }
-    })
-    .catch((err) => console.error(err));
-}
-
-const saveGame = async () => {
-    fetch('/api/savegame', {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: {
-     player_health: gameStats.player.checkHealth(),
-     enemy_health: gameStats.ai.checkHealth()
-    }
-    })
-    .then((res) => {
-     if(res.ok){
-         console.log('game saved');
-     }
-    })
-    .catch((err) => console.error(err));
-}
-
 const turnBased = async() => {
     displayHealth();
 
@@ -132,11 +63,9 @@ const turnBased = async() => {
         if(turn) {
             gameStats.setTurn(false);
             getPlayerChoice();
-            await saveGame();
         } else {
             gameStats.setTurn(true);
             getAiChoice();
-            await saveGame();
         }
     } else if(playerAlive){
         playerVictory();
@@ -164,7 +93,6 @@ const attackCb = async () => {
 
     document.getElementById('button-section').classList.add('hide-button');
 
-    //await saveGame();
     turnBased();
 }
 
@@ -178,7 +106,6 @@ const defendCb = async() => {
 
     document.getElementById('button-section').classList.add('hide-button');
 
-    //await saveGame();
     turnBased();
 }
 
