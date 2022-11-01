@@ -3,9 +3,11 @@
 <section id="entireGameSection" class="bg-[url('/images/cardBattle/full-screen-map-bare.png')] bg-contain bg-no-repeat w-[80vw] h-[80vh] border-4 border-black flex ">
     <section class=" flex flex-col w-40 m-0 justify-between">
         <img alt="player two" src="/images/cardBattle/avatar-2.png" class="w-36">
+        <h1 id="enemy-health-area" class="good-health"></h1>
         <div>
             <img src="/images/cardBattle/defend-animation.gif" alt="attack/defend gif">
         </div>
+        <h1 id="player-health-area" class="good-health"></h1>
         <img alt="player one" src="/images/cardBattle/avatar-1.png" class="w-36 flex-end">
     </section>
 
@@ -41,11 +43,11 @@
                 </section>
             </section>
             <section class="h-full w-1/5 flex-col mt-1 ">
-                <h1 class="font-press-start text-white " id="turnTitle">Your Turn</h1>
-                <button class="btn-game mx-0 " id="attackButton">Attack</button>
-                <button class="btn-game mx-0 " id="defenseButton">Defend</button>
-                <button class="btn-game mx-0 " id="skipButton">Skip</button>
-
+                <h1 class="font-press-start text-white" data-newGame="{{inGame}}" id="title">Your Turn</h1>
+                <h2></h2>
+                <button class="btn-game mx-0 w-2/4 " id="attackButton">Attack</button>
+                <button class="btn-game mx-0 w-2/4 " id="defenseButton">Defend</button>
+                <button class="btn-game mx-0 w-2/4 " id="skipButton">Skip</button>
             </section>
 
         </section>

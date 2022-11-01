@@ -58,15 +58,23 @@
         {{{ body }}}
 
     </main>
-    <footer
-        class="border-4 h-28 w-full absolute inset-x-0 bottom-0 border-black flex flex-row justify-start content-center bg-orange-600">
+    {{#if inGame}}
+    <footer class="border-4 h-28 w-full border-black flex flex-row justify-start content-center bg-orange-600">
         <a href="https://github.com/trufl/card-battle" target="_blank">
             <button class="btn-game m-8">
                 Github Repository
             </button>
         </a>
     </footer>
-
+    {{else}}
+    <footer class="border-4 h-28 w-full absolute inset-x-0 bottom-0 border-black flex flex-row justify-start content-center bg-orange-600">
+        <a href="https://github.com/trufl/card-battle" target="_blank">
+            <button class="btn-game m-8">
+                Github Repository
+            </button>
+        </a>
+    </footer>
+    {{/if}}
     <!-- Only include the logout script if the user is logged in -->
     {{#if logged_in}}
     <script src=" /js/logout.js">
