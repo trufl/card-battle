@@ -24,13 +24,15 @@ Create an .env file in the root directory with three variables with your respect
 
 To play this game, you either need to sign in or play as a guest.  If you are playing as a guest, you cannot pick your own deck or save your score.  If you chose to sign in you will first have to customize your deck.  After that you can then play.  The rules of the game are simple.  First select the card you would like to play.  After that choose what you would like to do.  You can either skip, defend, or attack.  Skip allows you to change turns without playing a card.  Defend allows you to heal yourself.  Attack allows you to do damage to the enemy AI.  The game is over when either the AI or player reaches 0 hp.
 
+![Example Gif](./public/images/Card-Battle-gif.gif)
+
 ## Credits
 
 [Morgan Tolman](https://github.com/unheardof77)
 [Jerome Nixon](https://github.com/jeromemn)  
 [Tristan Saragosa](https://github.com/trufl)  
-[James Xalis](https://github.com/jamesxalis)  
 [Leo Roccaforte](https://github.com/leorocca40)  
+[James Xalis](https://github.com/jamesxalis)  
 
 
 ## License
@@ -47,5 +49,5 @@ N/A
 
 ## Questions
 
-If you have any further questions, concerns, or feedback feel free to email me at morgan.tolman04@gmail.com.  Another way you can contact me is through my [GitHub](https://github.com/unheardof77) account. 
+If you have any further questions, concerns, or feedback feel free to email Morgan at morgan.tolman04@gmail.com, Jerome at jeromenixon95@gmail.com, Tristan at endlesstruffle80@gmail.com, Leo at leocubshat@gmail.com, and James at jamesxalis@icloud.com.
 ---
