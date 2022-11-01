@@ -26,7 +26,7 @@
             
             <div class="flex flex-shrink-0 relative w-60 min-width-full sm:w-auto h-72">
               <!-- need to set defense and strength to card id-->
-              <img class="card-img" data-id="{{'cards.id'}}" data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}"  src="/images/cardBattle/{{filename}}">
+              <img class="card-img" data-id="{{id}}" src="/images/cardBattle/{{filename}}">
 
             </div>
             {{/each}}
@@ -44,13 +44,14 @@
         </button>
   
       </div>
+      <button id='submit-btn' class="btn-game">Confirm Deck</button>
     </div>
   </section>
 </section>
-<button id="submit-btn" class="btn-game hide-button"> Confirm Deck</button>
 
 
 
+<link rel="stylesheet" href="/style/style.css">
 <script src="/js/customize.js"> </script>
 <script src="/js/card-picker.js"></script>
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">

@@ -30,4 +30,5 @@
   
   .bgrnd-selected {
     border: yellow;
+    border-width: 8px;
   }

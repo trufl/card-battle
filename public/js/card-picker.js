@@ -2,6 +2,7 @@ const pickedCards = [];
 
 const submitBtn = document.getElementById('submit-btn');
 
+
 const pickUsersCard = () => {
     const cards = document.querySelectorAll('.card-img');
 
@@ -12,7 +13,7 @@ const clickHandler = (event) => {
     //checks to make sure seven cards havent been selected
     if(pickedCards.length < 5) {
             //get card id from img attribute
-            const cardId = event.target.getAttribute('data-id');
+            const cardId = parseInt(event.target.getAttribute('data-id'));
             console.log(cardId)
 
             // add card id to array if not already selected
@@ -27,9 +28,10 @@ const clickHandler = (event) => {
 
                 if(pickedCards.length === 5) {
 
+                    pickedCards.forEach((card) => console.log(typeof card));
                     // if seven cards have been selected then show submit button and add event listener to send data to server
                     submitBtn.classList.remove('hide-button');
-                    submitBtn.addEventListener('click', submitHandler);
+
                 }
             }
     }
@@ -70,11 +72,13 @@ const dblHandler = (event) => {
     }
 }
 
-const submitHandler = () => {
+const submitHandler = async () => {
     if(pickedCards.length === 5) {
         const [card_1_id, card_2_id, card_3_id, card_4_id, card_5_id] = pickedCards;
+        console.log('clicked')
+        
 
-        fetch('api/newdeck', {
+        await fetch('api/newdeck', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: {
@@ -85,8 +89,9 @@ const submitHandler = () => {
                 card_5_id
             }
         })
-        ,then((res) => {
+        .then((res) => {
             if(res.ok) {
+                console.log('sent your card')
             }
         })
         .catch((err) => console.error(err));
@@ -94,4 +99,5 @@ const submitHandler = () => {
 }
 
 // To use when ready for deployment
+submitBtn.addEventListener('click', submitHandler);
 pickUsersCard();
