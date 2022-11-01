@@ -83,9 +83,23 @@ router.post('/newdeck', async (req,res) =>{
         await newDeck.addCard(card5, {through: {selfGranted: false}});
 
         res.status(200).json("Created new deck with cards supplied");
-    }catch(err){
+    } catch(err) {
         res.status(500).json(err);
     };
+});
+
+router.get('/getgame', async (req, res) => {
+    try {
+        const gamestate = await Gamestate.findOne({ where: { id: req.session.gameStateId } })
+        
+        if(!gamestate) {
+            res.status(404).json('Game not found');
+        }
+
+        res.status(200).json(gamestate);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 router.post('/savegame', async (req, res) =>{
