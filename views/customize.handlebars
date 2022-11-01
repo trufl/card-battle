@@ -21,7 +21,7 @@
             {{#each cards}}
             <div class="flex flex-shrink-0 relative w-60 min-width-full sm:w-auto h-72">
               <!-- need to set defense and strength to card id-->
-              <img id="card-img-area" class="card-selector" card_id="{{cardId}}" src="/images/cardBattle/{{filename}}">
+              <img class="card-selector card-img" data-id="{{id}}" src="/images/cardBattle/{{filename}}">
 
             </div>
             {{/each}}
@@ -37,10 +37,13 @@
               stroke-linejoin="round" />
           </svg>
         </button>
+  
+      </div>
+    </div>
+    <section>
+      <button id="submit-btn" class="btn hide-button">Submit Picked Cards</button>
+    </section>
   </section>
-  </div>
-  </div>
-</section>
 </section>
 
 {{!-- <section>
