@@ -13,11 +13,12 @@ const clickHandler = (event) => {
     if(pickedCards.length < 5) {
             //get card id from img attribute
             const cardId = event.target.getAttribute('data-id');
+            console.log(cardId)
 
             // add card id to array if not already selected
             if(!pickedCards.includes(cardId)) {
                 pickedCards.push(cardId);
-
+                console.log('stored')
                 //add class that applies css to show that the card has been selected
                 event.target.classList.add('bgrnd-selected');
 
@@ -37,11 +38,14 @@ const clickHandler = (event) => {
 const dblHandler = (event) => {
     //get id again from img attribute
     const cardId = event.target.getAttribute('data-id');
+    console.log(cardId)
+
 
     if(pickedCards.includes(cardId)) {
 
         //after making sure card is in array get index of card in array
         const index = pickedCards.indexOf(cardId);
+        console.log('unpicked card')
 
         //double checks to make sure card was found
         if(index > -1) {
@@ -83,7 +87,6 @@ const submitHandler = () => {
         })
         ,then((res) => {
             if(res.ok) {
-                window.location.replace('/customize');
             }
         })
         .catch((err) => console.error(err));

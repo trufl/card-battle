@@ -25,7 +25,7 @@
             {{#each cards}}
             <div class="flex flex-shrink-0 relative w-60 min-width-full sm:w-auto h-72">
               <!-- need to set defense and strength to card id-->
-              <img class="card-img" data-id="{{cardId}}" src="/images/cardBattle/{{filename}}">
+              <img class="card-img" data-id="{{id}}" src="/images/cardBattle/{{filename}}">
 
             </div>
             {{/each}}
@@ -41,11 +41,12 @@
               stroke-linejoin="round" />
           </svg>
         </button>
-  </div>
-  </div>
+  
+      </div>
+    </div>
   </section>
 </section>
-
+<button id="submit-btn" class="btn-game hide-button"> Confirm Deck</button>
 
 
 
