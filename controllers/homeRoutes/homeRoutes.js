@@ -18,18 +18,25 @@ router.get('/signup', (req, res) =>{
 
 router.get('/customize', withAuth, async (req, res) =>{
     try{
-        const userDecks = await Deck.findAll({
+        // const allCards = await Card.findAll({raw: true});
+        const cards = await Card.findAll({
+           
             raw: true,
-            where: {user_id: req.session.user_id},
-            include: Card
-        });
-        const cards = await Card.findAll({raw:true});
-        if(userDecks.length == 0){
-            res.status(404).render('customize', {hasDecks: false, cards});
-        }else{
+         });
+        // if(userDecks.length == 0){
+        //     res.status(404).render('customize', {hasDecks: false, cards});
+        // }else{
 
-            res.status(200).render('customize', {hasDecks: true, userDecks, cards});
-        };
+        //     res.status(200).render('customize', {hasDecks: true, userDecks, cards});
+        // };
+        res.status(200).render('customize', {
+            cards,
+            logged_in:req.session.logged_in,
+            userData:req.session.user_id
+            
+
+
+        });
     }catch(err){
         res.status(500).json(err)
     }
