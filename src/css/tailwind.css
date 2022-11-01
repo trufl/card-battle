@@ -12,7 +12,7 @@
     }
 
     .bgrnd-selected {
-        @apply border-yellow-400;
+        @apply border-yellow-400 border-4;
     }
 
     .hide-button {
