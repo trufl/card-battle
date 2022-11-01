@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Press+Start+2P&display=swap"
         rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style/style.css">
     <title>User Registry</title>
 </head>
 
@@ -19,23 +21,40 @@
         </h1>
 
 
-                <svg class="text-white h-20 w-20 flex flex-row justify-between content-center" xmlns=" http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-40 h-40">
-                    <path stroke-linecap="square" stroke-linejoin="square"
-                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-            
-
- 
-
         <!-- Only display the logout button if the user is logged in -->
         {{#if logged_in}}
         <nav>
-            <button class="btn-game" id="logout">Logout</button>
+            
         </nav>
         {{/if}}
+
+        <div class="dropdown relative inline-block btn-game m-4">
+            <button class="dropbtn"><svg class="text-white h-20 w-20 flex flex-row justify-between content-center"
+                    xmlns=" http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-40 h-40">
+                    <path stroke-linecap="square" stroke-linejoin="square"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg></button>
+            <div class="dropdown-content hidden absolute z-1 hover:block border-4 border-black bg-orange-600 mr-8 h-fit">
+                {{#if logged_in}}
+                <a class="btn-game" id="logout">Logout</a>
+                {{else}}
+                <a class="btn-game" href="/login">Login</a>
+                {{/if}}
+                <a class="btn-game" href="/signup">Sign Up</a>
+                <a class="btn-game" href="/">Homepage</a>
+                {{#if logged_in}}
+                <a class="btn-game" href="/customize">Battle</a>
+                {{else}}
+                <a class="btn-game" href="/battle">Battle</a>
+                {{/if}}
+            </div>
+        </div>
+
+
     </header>
     <main>
+       
         {{{ body }}}
 
     </main>
@@ -62,7 +81,6 @@
     </script>
     {{/if}}
 
-    
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 <section id="entireGameSection" class="bg-[url('/images/cardBattle/full-screen-map-bare.png')] bg-contain bg-no-repeat w-[80vw] h-[80vh] flex ">
     <section class=" flex flex-col w-40 m-0 justify-between">
-        <img alt="player two" src="/images/cardBattle/avatar-2.png" class="w-36">
+        <img alt="player two" data-enemyid="{{enemy_id}}" src="/images/cardBattle/avatar-2.png" class="w-36">
         <h1 id="enemy-health-area" class="good-health"></h1>
         <div>
             <img src="/images/cardBattle/defend-animation.gif" alt="attack/defend gif">
@@ -9,18 +9,26 @@
         <img alt="player one" src="/images/cardBattle/avatar-1.png" class="w-36 flex-end">
     </section>
 
-    <section class=" flex flex-col h-full">
+            <section class=" flex flex-col h-full">
 
-        <section aria-details="upper section" class="flex-row w-full h-2/4">
-            <section aria-details="card section" class="flex h-2/4">
-                {{#each cards}}
-                <img class="enemy-card" data-defense="{{defenseStat}}" data-strength="{{attackStat}}" src="/images/cardBattle/{{filename}}">
-                {{/each}}
-            </section>
-            <section aria-details="below cards" class="flex h-2/4 w-full justify-center" >
-                <img id="playedEnemyCard" src="" class="my-2">
-            </section>
-        </section>
+                <section aria-details="upper section" class="flex-row w-full h-2/4">
+                    <section aria-details="card section" class="flex h-2/4">
+                        {{#if logged_in}}
+                        {{#each cards}}
+                        <img class="enemy-card" data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}"
+                            src="/images/cardBattle/{{'cards.filename'}}">
+                        {{/each}}
+                        {{else}}
+                        {{#each cards}}
+                        <img class="enemy-card" data-defense="{{defenseStat}}" data-strength="{{attackStat}}"
+                            src="/images/cardBattle/{{filename}}">
+                        {{/each}}
+                        {{/if}}
+                    </section>
+                    <section aria-details="below cards" class="flex h-2/4 w-full justify-center">
+                        <img id="playedEnemyCard" data-defense="" data-strength="" src="" class="my-2">
+                    </section>
+                </section>
 
         <section class="flex flex-row w-full h-2/4">
 
@@ -40,14 +48,13 @@
                     {{/if}}
                 </section>
             </section>
-            <section id="button-section" class="h-full w-1/5 flex-col mt-1 hide-button">
-                <h1 class="font-extrabold " data-newGame="{{inGame}}" id="title">Your Turn</h1>
+            <section id="button-section" class="h-full w-1/5 flex-col mt-1 button-hidden">
+                <h1 class="font-press-start text-white" data-newGame="{{inGame}}" id="title">Your Turn</h1>
                 <h2></h2>
-                <button class="btn-game mx-0 w-2/4 " id="attackButton">Attack</button>
-                <button class="btn-game mx-0 w-2/4 " id="defenseButton">Defend</button>
-                <button class="btn-game mx-0 w-2/4 " id="skipButton">Skip</button>
+                <button class="btn-game mx-0" id="attackButton">Attack</button>
+                <button class="btn-game mx-0" id="defenseButton">Defend</button>
+                <button class="btn-game mx-0" id="skipButton">Skip</button>
             </section>
-
         </section>
     </section>
 </section>
