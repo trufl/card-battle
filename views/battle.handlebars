@@ -1,7 +1,7 @@
 <section id="entireGameSection" class="bg-[url('/images/cardBattle/full-screen-map-bare.png')] bg-contain bg-no-repeat w-[80vw] h-[80vh] flex ">
     <section class=" flex flex-col w-40 m-0 justify-between">
-        <img alt="player two" data-enemyid="{{enemy_id}}" src="/images/cardBattle/avatar-2.png" class="w-36">
-        <h1 id="enemy-health-area" class="good-health"></h1>
+        <img alt="player two" src="/images/cardBattle/avatar-2.png" class="w-36">
+        <h1 id="enemy-health-area" data-enemyid="{{enemy_id}}" class="good-health"></h1>
         <div>
             <img src="/images/cardBattle/defend-animation.gif" alt="attack/defend gif">
         </div>
@@ -60,4 +60,8 @@
 </section>
 <script src="/js/classes/Player.js"></script>
 <script src="/js/classes/GameClass.js"></script>
+{{#if logged_in}}
 <script src="/js/play-game.js"></script>
+{{else}}
+<script src="/js/unsigned-play-game.js"></script>
+{{/if}}
