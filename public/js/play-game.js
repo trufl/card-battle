@@ -33,12 +33,12 @@ const displayHealth = () => {
     if(playerHealth < 700) {
         switch(playerHealth) {
             case playerHealth > 350:
-                playerHealthDisplay.classList.remove('green-color');
-                playerHealthDisplay.classList.add('orange-color');
+                playerHealthDisplay.classList.remove('good-health');
+                playerHealthDisplay.classList.add('mid-health');
                 break;
             case playerHealth <= 350:
-                playerHealthDisplay.classList.remove('orange-color');
-                playerHealthDisplay.classList.add('red-color');
+                playerHealthDisplay.classList.remove('mid-health');
+                playerHealthDisplay.classList.add('low-health');
                 break;
             default:
                 break;
@@ -48,12 +48,12 @@ const displayHealth = () => {
     if(aiHealth < 700) {
         switch(aiHealth) {
             case aiHealth > 350:
-                aiHealthDisplay.classList.remove('green-color');
-                aiHealthDisplay.classList.add('orange-color');
+                aiHealthDisplay.classList.remove('good-health');
+                aiHealthDisplay.classList.add('mid-health');
                 break;
             case aiHealth <= 350:
-                aiHealthDisplay.classList.add('orange-color');
-                aiHealthDisplay.classList.add('red-color');
+                aiHealthDisplay.classList.add('mid-health');
+                aiHealthDisplay.classList.add('low-health');
                 break;
             default:
                 break;
@@ -156,30 +156,39 @@ const enemyAssemble = () => {
     return ai;
 }
 
-const attackCb = () => {
+const attackCb = async () => {
     const strength = document.getElementById('played-card').getAttribute('data-attack');
+    const playedCard = document.getElementById('playedPlayerCard');
+
+    playedCard.classList.add('hide-card');
     
     gameStats.player.attack(gameStats.ai, strength );
 
     document.getElementById('buttonSection').style.display = 'none';
 
-    // await saveGame();
+    await saveGame();
     turnBased();
 }
 
-const defendCb = () => {
+const defendCb = async() => {
     const defense = document.getElementById('played-card').getAttribute('data-defense');
+    const playedCard = document.getElementById('playedPlayerCard');
+
+    playedCard.classList.add('hide-card');
 
     gameStats.player.defend(defense);
 
     document.getElementById('buttonSection').style.display = 'none';
 
-    // await saveGame();
+    await saveGame();
     turnBased();
 }
 
 const skipCb = () => {
     document.getElementById('buttonSection').style.display = 'none';
+    const playedCard = document.getElementById('playedPlayerCard');
+
+    playedCard.classList.add('hide-card');
     
     turnBased();
 }

@@ -90,7 +90,7 @@ router.post('/newdeck', async (req,res) =>{
 
 router.get('/getgame', async (req, res) => {
     try {
-        const gamestate = await Gamestate.findOne({ where: { user_id: req.session.user_id } })
+        const gamestate = await Gamestate.findOne({ where: { id: req.session.gameStateId } })
         
         if(!gamestate) {
             res.status(404).json('Game not found');
