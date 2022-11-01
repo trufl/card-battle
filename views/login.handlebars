@@ -10,21 +10,23 @@
             </button>
         </a>
         {{else}}
+        <section class="">
         <form class="form login-form text-white font-press-start">
             <div class="form-group">
                 <label for="email-login">Email:</label>
-                <input class="form-input text-black border-2 border-black" type="text" id="email-login" />
+                <input class="form-input text-black border-2 border-black ml-10 mr-8" type="text" id="email-login" />
             </div>
 
             <div class="form-group">
                 <label for="password-login">Password:</label>
-                <input class="form-input text-black border-2 border-black" type="password" id="password-login" />
+                <input class="form-input text-black border-2 border-black mr-8" type="password" id="password-login" />
             </div>
 
             <div class="form-group">
                 <button class="btn" type="submit">Login</button>
             </div>
         </form>
+        </section>
         {{/if}}
     </div>
 </section>

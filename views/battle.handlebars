@@ -1,18 +1,18 @@
 <section id="entireGameSection" class="bg-[url('/images/cardBattle/full-screen-map-bare.png')] bg-contain bg-no-repeat w-[80vw] h-[80vh] flex ">
     <section class=" flex flex-col w-40 m-0 justify-between">
         <img alt="player two" src="/images/cardBattle/avatar-2.png" class="w-36">
-        <h1 id="enemy-health-area" data-enemyid="{{enemy_id}}" class="good-health"></h1>
+        <h1 id="enemy-health-area" data-enemyid="{{enemy_id}}" class="good-health font-press-start font-extrabold text-3xl mr-8 ml-4"></h1>
         <div>
             <img src="/images/cardBattle/defend-animation.gif" alt="attack/defend gif">
         </div>
-        <h1 id="player-health-area" class="good-health"></h1>
-        <img alt="player one" src="/images/cardBattle/avatar-1.png" class="w-36 flex-end">
+        <h1 id="player-health-area" class="good-health font-press-start font-extrabold text-3xl mr-8 ml-4"></h1>
+        <img alt="player one" src="/images/cardBattle/avatar-1.png" class="w-36 mr-8 flex-end">
     </section>
 
             <section class=" flex flex-col h-full">
 
                 <section aria-details="upper section" class="flex-row w-full h-2/4">
-                    <section aria-details="card section" class="flex h-2/4">
+                    <section aria-details="card section" class="flex h-2/4 gap-4">
                         {{#if logged_in}}
                         {{#each cards}}
                         <img class="enemy-card" data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}"
@@ -36,7 +36,7 @@
                 <section id="playerSelectedCard" class="flex h-2/4 w-full justify-center">
                     <img id="playedPlayerCard" data-defense="" data-strength="" src="" class="my-2 hide-card">
                 </section>
-                <section id="playerCards" class="flex h-2/4 w-full">
+                <section id="playerCards" class="flex h-2/4 w-full gap-4">
                     {{#if logged_in}}
                     {{#each playerDeck}}
                     <img class="player-card" data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}" src="/images/cardBattle/{{'cards.filename'}}">
