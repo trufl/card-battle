@@ -651,6 +651,10 @@ video {
   max-height: 100vh;
 }
 
+.min-h-screen {
+  min-height: 100vh;
+}
+
 .w-\[80vw\] {
   width: 80vw;
 }
@@ -778,6 +782,11 @@ video {
   background-repeat: no-repeat;
 }
 
+.object-right-top {
+  -o-object-position: right top;
+     object-position: right top;
+}
+
 .p-10 {
   padding: 2.5rem;
 }
@@ -790,6 +799,10 @@ video {
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.pb-28 {
+  padding-bottom: 7rem;
 }
 
 .pt-32 {
