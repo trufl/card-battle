@@ -1,6 +1,6 @@
 <section id="entireGameSection" class="bg-[url('/images/cardBattle/full-screen-map-bare.png')] bg-contain bg-no-repeat w-[80vw] h-[80vh] flex ">
     <section class=" flex flex-col w-40 m-0 justify-between">
-        <img alt="player two" src="/images/cardBattle/avatar-2.png" class="w-36">
+        <img alt="player two" data-enemyid="{{enemy_id}}" src="/images/cardBattle/avatar-2.png" class="w-36">
         <h1 id="enemy-health-area" class="good-health"></h1>
         <div>
             <img src="/images/cardBattle/defend-animation.gif" alt="attack/defend gif">
@@ -13,9 +13,15 @@
 
         <section aria-details="upper section" class="flex-row w-full h-2/4">
             <section aria-details="card section" class="flex h-2/4">
+                {{#if logged_in}}
+                {{#each cards}}
+                <img data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}" src="/images/cardBattle/{{'cards.filename'}}">
+                {{/each}}
+                {{else}}
                 {{#each cards}}
                 <img data-defense="{{defenseStat}}" data-strength="{{attackStat}}" src="/images/cardBattle/{{filename}}">
                 {{/each}}
+                {{/if}}
             </section>
             <section aria-details="below cards" class="flex h-2/4 w-full justify-center" >
                 <img id="playedEnemyCard" data-defense="" data-strength="" src="" class="my-2">
@@ -23,7 +29,6 @@
         </section>
 
         <section class="flex flex-row w-full h-2/4">
-
             <section class="flex-col w-4/5 h-full">
                 <section id="playerSelectedCard" class="flex h-2/4 w-full justify-center">
                     <img id="playedPlayerCard" data-defense="" data-strength="" src="" class="my-2">
@@ -47,9 +52,9 @@
                 <button class="btn-game mx-0 w-2/4 " id="defenseButton">Defend</button>
                 <button class="btn-game mx-0 w-2/4 " id="skipButton">Skip</button>
             </section>
-
         </section>
-
     </section>
 </section>
+
+
 

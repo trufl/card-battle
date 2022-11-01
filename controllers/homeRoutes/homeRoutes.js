@@ -51,24 +51,26 @@ router.get('/battle', async (req, res) =>{
                     where: {user_id: gameData.playerId},
                     include: Card,
                 });
-
+                console.log(playerDeck)
                 cards = await EnemyDeck.findOne({
                     raw: true,
                     where: {enemy_id: gameData.enemyId},
                     include: Card,
                 });
+                console.log(cards)
             }else{
                 playerDeck = await Deck.findOne({
                     raw: true,
                     where: {user_id: req.session.user_id},
                     include: Card,
                 });
-
-                cards = await Card.findAll({raw: true});
-                for(i=0;i<5;i++){
-                    const random = Math.floor(Math.random() * 10);
-                    cards.splice(random-i, 1);
-                };
+                console.log(playerDeck)
+                cards = await EnemyDeck.findOne({
+                    raw: true,
+                    where: {id: Math.floor(Math.random()*2)+1},
+                    include: Card
+                })
+                console.log(cards)
             };
         }else{
             playerDeck = await Card.findAll({raw: true});
