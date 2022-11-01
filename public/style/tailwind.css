@@ -1784,6 +1784,10 @@ input:checked + .toggle-bg {
   --tw-ring-opacity: 0.75;
 }
 
+.hide-card {
+  display: none;
+}
+
 .hover\:border-4:hover {
   border-width: 4px;
 }

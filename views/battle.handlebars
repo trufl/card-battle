@@ -15,12 +15,12 @@
                     <section aria-details="card section" class="flex h-2/4">
                         {{#if logged_in}}
                         {{#each cards}}
-                        <img data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}"
+                        <img class="enemy-card" data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}"
                             src="/images/cardBattle/{{'cards.filename'}}">
                         {{/each}}
                         {{else}}
                         {{#each cards}}
-                        <img data-defense="{{defenseStat}}" data-strength="{{attackStat}}"
+                        <img class="enemy-card" data-defense="{{defenseStat}}" data-strength="{{attackStat}}"
                             src="/images/cardBattle/{{filename}}">
                         {{/each}}
                         {{/if}}
@@ -34,21 +34,21 @@
 
             <section class="flex-col w-4/5 h-full">
                 <section id="playerSelectedCard" class="flex h-2/4 w-full justify-center">
-                    <img id="playedPlayerCard" data-defense="" data-strength="" src="" class="my-2">
+                    <img id="playedPlayerCard" data-defense="" data-strength="" src="" class="my-2 hide-card">
                 </section>
                 <section id="playerCards" class="flex h-2/4 w-full">
                     {{#if logged_in}}
                     {{#each playerDeck}}
-                    <img data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}" src="/images/cardBattle/{{'cards.filename'}}">
+                    <img class="player-card" data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}" src="/images/cardBattle/{{'cards.filename'}}">
                     {{/each}}
                     {{else}}
                     {{#each playerDeck}}
-                    <img data-defense="{{defenseStat}}" data-strength="{{attackStat}}" src="/images/cardBattle/{{filename}}">
+                    <img class="player-card" data-defense="{{defenseStat}}" data-strength="{{attackStat}}" src="/images/cardBattle/{{filename}}">
                     {{/each}}
                     {{/if}}
                 </section>
             </section>
-            <section class="h-full w-1/5 flex-col mt-1 ">
+            <section id="button-section" class="h-full w-1/5 flex-col mt-1 button-hidden">
                 <h1 class="font-press-start text-white" data-newGame="{{inGame}}" id="title">Your Turn</h1>
                 <h2></h2>
                 <button class="btn-game mx-0" id="attackButton">Attack</button>
@@ -58,6 +58,6 @@
         </section>
     </section>
 </section>
-
-
-
+<script src="/js/classes/Player.js"></script>
+<script src="/js/classes/GameClass.js"></script>
+<script src="/js/play-game.js"></script>

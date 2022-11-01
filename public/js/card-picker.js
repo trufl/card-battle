@@ -19,7 +19,7 @@ const clickHandler = (event) => {
                 pickedCards.push(cardId);
 
                 //add class that applies css to show that the card has been selected
-                event.target.classList.add('custom-bgrnd-selected');
+                event.target.classList.add('bgrnd-selected');
 
                  //add event listener to img so that a double click can unselect card
                 event.target.addEventListener('dblclick', dblHandler);
@@ -27,7 +27,7 @@ const clickHandler = (event) => {
                 if(pickedCards.length === 5) {
 
                     // if seven cards have been selected then show submit button and add event listener to send data to server
-                    submitBtn.classList.add('show-button');
+                    submitBtn.classList.remove('hide-button');
                     submitBtn.addEventListener('click', submitHandler);
                 }
             }
@@ -53,15 +53,15 @@ const dblHandler = (event) => {
         event.target.removeEventListener('dblclick', dblHandler);
 
         //removes custom background to let user know card was unselected
-        event.target.classList.remove("custom-bgrnd-selected");
+        event.target.classList.remove('bgrnd-selected');
 
-        if(pickedCards.length < 5) {
+        if(pickedCards.length >= 4 && pickedCards.length < 5) {
             //makes sure card was removed
             //then remove event listener from submit button
             submitBtn.removeEventListener('click', submitHandler);
 
             //then hide submit button
-            submitBtn.classList.remove("show-button");
+            submitBtn.classList.add("hide-button");
         }
     }
 }
@@ -83,7 +83,7 @@ const submitHandler = () => {
         })
         ,then((res) => {
             if(res.ok) {
-                window.location.replace('/character-customize')
+                window.location.replace('/customize');
             }
         })
         .catch((err) => console.error(err));
