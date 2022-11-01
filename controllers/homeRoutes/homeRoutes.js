@@ -47,50 +47,50 @@ router.get('/battle', async (req, res) =>{
         let playerDeck;
         let cards;
         //The where clause in this deck.findAll needs to be replaced with some sort of parameter to indicate what deck they chose
-        if(req.session.logged_in){
-            if(req.session.inGame){
-                const gameData = await Gamestate.findOne({
-                    where:{id:req.session.gameStateId}
-                });
+        // if(req.session.logged_in){
+        //     if(req.session.inGame){
+        //         const gameData = await Gamestate.findOne({
+        //             where:{id:req.session.gameStateId}
+        //         });
 
-                playerDeck = await Deck.findOne({
-                    raw: true,
-                    where: {user_id: gameData.playerId},
-                    include: Card,
-                });
-                console.log(playerDeck)
-                cards = await EnemyDeck.findOne({
-                    raw: true,
-                    where: {enemy_id: gameData.enemyId},
-                    include: Card,
-                });
-                console.log(cards)
-            }else{
-                playerDeck = await Deck.findOne({
-                    raw: true,
-                    where: {user_id: req.session.user_id},
-                    include: Card,
-                });
-                console.log(playerDeck)
-                cards = await EnemyDeck.findOne({
-                    raw: true,
-                    where: {id: Math.floor(Math.random()*2)+1},
-                    include: Card
-                })
-                console.log(cards)
-            };
-        }else{
+        //         playerDeck = await Deck.findOne({
+        //             raw: true,
+        //             where: {user_id: gameData.playerId},
+        //             include: Card,
+        //         });
+        //         console.log(playerDeck)
+        //         cards = await EnemyDeck.findOne({
+        //             raw: true,
+        //             where: {enemy_id: gameData.enemyId},
+        //             include: Card,
+        //         });
+        //         console.log(cards)
+        //     }else{
+        //         playerDeck = await Deck.findOne({
+        //             raw: true,
+        //             where: {user_id: req.session.user_id},
+        //             include: Card,
+        //         });
+        //         console.log(playerDeck)
+        //         cards = await EnemyDeck.findOne({
+        //             raw: true,
+        //             where: {id: Math.floor(Math.random()*2)+1},
+        //             include: Card
+        //         })
+        //         console.log(cards)
+        //     };
+        // }else{
             playerDeck = await Card.findAll({raw: true});
             for(j=0;j<5;j++){
                 const random = Math.floor(Math.random() * 10);
                 playerDeck.splice(random-j, 1);
-            };
+            }
             cards = await Card.findAll({raw: true});
             for(i=0;i<5;i++){
                 const random = Math.floor(Math.random() * 10);
                 cards.splice(random-i, 1);
-            };
-        };
+            }
+        // };
 
         req.session.save(() => {
             req.session.inGame = true;

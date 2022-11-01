@@ -13,17 +13,17 @@
 
                 <section aria-details="upper section" class="flex-row w-full h-2/4">
                     <section aria-details="card section" class="flex h-2/4 gap-4">
-                        {{#if logged_in}}
+                        {{!-- {{#if logged_in}}
                         {{#each cards}}
                         <img class="enemy-card" data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}"
                             src="/images/cardBattle/{{'cards.filename'}}">
                         {{/each}}
-                        {{else}}
+                        {{else}} --}}
                         {{#each cards}}
                         <img class="enemy-card" data-defense="{{defenseStat}}" data-strength="{{attackStat}}"
                             src="/images/cardBattle/{{filename}}">
                         {{/each}}
-                        {{/if}}
+                        {{!-- {{/if}} --}}
                     </section>
                     <section aria-details="below cards" class="flex h-2/4 w-full justify-center">
                         <img id="playedEnemyCard" data-defense="" data-strength="" src="" class="my-2">
@@ -37,15 +37,15 @@
                     <img id="playedPlayerCard" data-defense="" data-strength="" src="" class="my-2 hide-card">
                 </section>
                 <section id="playerCards" class="flex h-2/4 w-full gap-4">
-                    {{#if logged_in}}
+                    {{!-- {{#if logged_in}}
                     {{#each playerDeck}}
                     <img class="player-card" data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}" src="/images/cardBattle/{{'cards.filename'}}">
                     {{/each}}
-                    {{else}}
+                    {{else}} --}}
                     {{#each playerDeck}}
                     <img class="player-card" data-defense="{{defenseStat}}" data-strength="{{attackStat}}" src="/images/cardBattle/{{filename}}">
                     {{/each}}
-                    {{/if}}
+                    {{!-- {{/if}} --}}
                 </section>
             </section>
             <section id="button-section" class="h-full w-1/5 flex-col mt-1 button-hidden">
@@ -60,8 +60,8 @@
 </section>
 <script src="/js/classes/Player.js"></script>
 <script src="/js/classes/GameClass.js"></script>
-{{#if logged_in}}
-<script src="/js/play-game.js"></script>
-{{else}}
+{{!-- {{#if logged_in}} --}}
+{{!-- <script src="/js/play-game.js"></script> --}}
+{{!-- {{else}} --}}
 <script src="/js/unsigned-play-game.js"></script>
-{{/if}}
+{{!-- {{/if}} --}}

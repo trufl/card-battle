@@ -10,7 +10,7 @@ const init = async () => {
         const player = new Player(0);
         const ai = enemyAssemble();
         gameStats = new GameStats(player, ai);
-        saveStartGame();
+        //saveStartGame();
         turnBased();
     } else {
         gameStats = await getPrevGame();
@@ -132,11 +132,11 @@ const turnBased = async() => {
         if(turn) {
             gameStats.setTurn(false);
             getPlayerChoice();
-            await saveGame();
+            //await saveGame();
         } else {
             gameStats.setTurn(true);
             getAiChoice();
-            await saveGame();
+            //await saveGame();
         }
     } else if(playerAlive){
         playerVictory();
@@ -164,7 +164,6 @@ const attackCb = async () => {
 
     document.getElementById('button-section').classList.add('hide-button');
 
-    //await saveGame();
     turnBased();
 }
 
@@ -178,7 +177,6 @@ const defendCb = async() => {
 
     document.getElementById('button-section').classList.add('hide-button');
 
-    //await saveGame();
     turnBased();
 }
 
