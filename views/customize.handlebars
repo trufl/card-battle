@@ -23,9 +23,10 @@
           <div id="slider"
             class="h-full w-full flex gap-8 items-center justify-center transition-all ease-out duration-1000 ">
             {{#each cards}}
+            
             <div class="flex flex-shrink-0 relative w-60 min-width-full sm:w-auto h-72">
               <!-- need to set defense and strength to card id-->
-              <img class="card-img" data-id="{{id}}" src="/images/cardBattle/{{filename}}">
+              <img class="card-img" data-id="{{'cards.id'}}" data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}"  src="/images/cardBattle/{{filename}}">
 
             </div>
             {{/each}}
