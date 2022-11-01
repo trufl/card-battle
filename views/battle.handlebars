@@ -9,26 +9,29 @@
         <img alt="player one" src="/images/cardBattle/avatar-1.png" class="w-36 flex-end">
     </section>
 
-    <section class=" flex flex-col h-full">
+            <section class=" flex flex-col h-full">
 
-        <section aria-details="upper section" class="flex-row w-full h-2/4">
-            <section aria-details="card section" class="flex h-2/4">
-                {{#if logged_in}}
-                {{#each cards}}
-                <img data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}" src="/images/cardBattle/{{'cards.filename'}}">
-                {{/each}}
-                {{else}}
-                {{#each cards}}
-                <img data-defense="{{defenseStat}}" data-strength="{{attackStat}}" src="/images/cardBattle/{{filename}}">
-                {{/each}}
-                {{/if}}
-            </section>
-            <section aria-details="below cards" class="flex h-2/4 w-full justify-center" >
-                <img id="playedEnemyCard" data-defense="" data-strength="" src="" class="my-2">
-            </section>
-        </section>
+                <section aria-details="upper section" class="flex-row w-full h-2/4">
+                    <section aria-details="card section" class="flex h-2/4">
+                        {{#if logged_in}}
+                        {{#each cards}}
+                        <img data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}"
+                            src="/images/cardBattle/{{'cards.filename'}}">
+                        {{/each}}
+                        {{else}}
+                        {{#each cards}}
+                        <img data-defense="{{defenseStat}}" data-strength="{{attackStat}}"
+                            src="/images/cardBattle/{{filename}}">
+                        {{/each}}
+                        {{/if}}
+                    </section>
+                    <section aria-details="below cards" class="flex h-2/4 w-full justify-center">
+                        <img id="playedEnemyCard" data-defense="" data-strength="" src="" class="my-2">
+                    </section>
+                </section>
 
         <section class="flex flex-row w-full h-2/4">
+
             <section class="flex-col w-4/5 h-full">
                 <section id="playerSelectedCard" class="flex h-2/4 w-full justify-center">
                     <img id="playedPlayerCard" data-defense="" data-strength="" src="" class="my-2">
@@ -46,11 +49,11 @@
                 </section>
             </section>
             <section class="h-full w-1/5 flex-col mt-1 ">
-                <h1 class="font-extrabold " data-newGame="{{inGame}}" id="title">Your Turn</h1>
+                <h1 class="font-press-start text-white" data-newGame="{{inGame}}" id="title">Your Turn</h1>
                 <h2></h2>
-                <button class="btn-game mx-0 w-2/4 " id="attackButton">Attack</button>
-                <button class="btn-game mx-0 w-2/4 " id="defenseButton">Defend</button>
-                <button class="btn-game mx-0 w-2/4 " id="skipButton">Skip</button>
+                <button class="btn-game mx-0" id="attackButton">Attack</button>
+                <button class="btn-game mx-0" id="defenseButton">Defend</button>
+                <button class="btn-game mx-0" id="skipButton">Skip</button>
             </section>
         </section>
     </section>
