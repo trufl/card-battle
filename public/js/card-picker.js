@@ -74,7 +74,7 @@ const submitHandler = () => {
     if(pickedCards.length === 5) {
         const [card_1_id, card_2_id, card_3_id, card_4_id, card_5_id] = pickedCards;
 
-        fetch('api/newdeck', {
+        fetch('/newdeck', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: {

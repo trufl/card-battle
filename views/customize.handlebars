@@ -1,6 +1,6 @@
 <section class="min-h-screen w-screen bg-indigo-700 relative pb-28 pt-32">
   <a href="/userDeck">
-<button id="submit-btn" class="font-press-start font-extrabold text-3xl ml-10"> Confirm Deck</button>
+<button id="submit-btn" class="font-press-start font-extrabold text-3xl ml-10"> Current Deck</button>
 </a>
 
   <section class="p-10 border-4 border-black bg-orange-600 h-fit">
@@ -26,7 +26,7 @@
             
             <div class="flex flex-shrink-0 relative w-60 min-width-full sm:w-auto h-72">
               <!-- need to set defense and strength to card id-->
-              <img class="card-img" data-id="{{'cards.id'}}" data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}"  src="/images/cardBattle/{{filename}}">
+              <img class="card-img" data-id="{{id}}" data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}"  src="/images/cardBattle/{{filename}}">
 
             </div>
             {{/each}}
@@ -46,8 +46,8 @@
       </div>
     </div>
   </section>
-</section>
 <button id="submit-btn" class="btn-game hide-button"> Confirm Deck</button>
+</section>
 
 
 

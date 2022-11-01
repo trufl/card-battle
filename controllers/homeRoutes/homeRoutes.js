@@ -143,7 +143,12 @@ router.get('/userdeck', withAuth, async (req, res) => {
             raw: true,
             include: Card
         });
-        res.status(200).render('userDeck', {decks})
+        res.status(200).render('userDeck', {decks,
+            logged_in:req.session.logged_in,
+            userData:req.session.user_id
+
+            
+        })
     }catch(err){
         res.status(500).json(err);
     }

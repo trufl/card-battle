@@ -2,27 +2,24 @@
 <section>
      {{!-- <div class="flex items-center justify-center w-full h-full px-4 "> --}}
             <h2 class="text-center font-press-start font-extrabold text-3xl pt-4"> Current Deck</h2>
-
-                    {{#if hasDecks}}
-                    {{#each userDecks}}
-      <div class="">
-<!-- need to set defense and strength to card id-->
-                 <img class="card-img"
-          card_id="{{cardId}}"
-          src="/images/cardBattle/{{filename}}">
+<section class="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4 ">
+                    {{!-- {{#if hasDecks}} --}}
+                    {{#each decks}}
+      <div>
+                 <img class="" data-id="{{id}}" data-defense="{{'cards.defenseStat'}}" data-strength="{{'cards.attackStat'}}"  src="/images/cardBattle/{{'cards.filename'}}">
         </div>
                     {{/each}}
 
-                    {{else}}
+                    
 <div object-right-top>
                   <a href="/customize"> 
-                  <button> Create a Deck </button>
+                  <button class="text-center font-press-start font-extrabold text-3xl pt-4"> Create a Deck </button>
                   </a>
 </div>
-                    {{/if}}
-    
+                    
+  </section>
 <!-- need to set defense and strength to card id-->
-    </div>
+    {{!-- </div> --}}
 </section>
 
 
