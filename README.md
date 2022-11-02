@@ -2,7 +2,11 @@
 
 ## Description
 
-Card Battle is a turn based card game.  We decided to create this game...  This is a full-stack application.  It uses a mysql database, an express backend, and a handlebars view engine to render the page.
+A JavaScript implementation of a custom card game.  Card battle is both a fun solitaire and multiplayer game since you can play against the A.I.(novice).  The current version of the game [can be played on GitHub Pages by clicking here](https://card-battle.herokuapp.com/).
+
+The goal of the game is eliminate your opponent by lowering their hitpoints to 0 first. All 10 cards have the same option to attack, defend, or skip.
+
+Click a card to call it to action.  The game checks the attributes of the selected card: attack and defend.  If the selected card attacks, the opponent will have their hitpoints deducted by the attack subtracted by the defending cards defense.  You can regain hitpoints by selecting a card and using defense. The first player to 0 hitpoints loses. 
 
 ## Table of Contents 
 
